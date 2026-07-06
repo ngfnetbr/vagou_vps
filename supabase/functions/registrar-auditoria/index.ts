@@ -9,7 +9,7 @@ Deno.serve(async (req) => {
 
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+    const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY')!
     
     // Get auth header to identify user
     const authHeader = req.headers.get('Authorization')
@@ -40,9 +40,8 @@ Deno.serve(async (req) => {
       )
     }
 
-    // Service-role client — do NOT forward the user's Authorization header,
-    // otherwise PostgREST enforces RLS as that user and the insert fails.
-    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: authHeader } },
       auth: { persistSession: false, autoRefreshToken: false },
     })
 
@@ -69,21 +68,17 @@ Deno.serve(async (req) => {
       return rateLimitResponse(rateLimitResult, getCorsHeaders(req))
     }
 
-    // Insert audit record directly
-    const { data, error } = await supabase
-      .from('auditoria')
-      .insert({
-        tabela,
-        operacao,
-        registro_id: registro_id || null,
-        dados_antigos: dados_antigos || null,
-        dados_novos: dados_novos || null,
-        usuario_id: userId,
-        ip_address: ipAddress,
-        user_agent: userAgent,
-      })
-      .select('id')
-      .single()
+    // Use the SECURITY DEFINER RPC so audit writes remain locked down by RLS
+    // while authenticated users can still request a controlled audit record.
+    const { data, error } = await supabase.rpc('registrar_auditoria', {
+      p_tabela: tabela,
+      p_operacao: operacao,
+      p_registro_id: registro_id || null,
+      p_dados_antigos: dados_antigos || null,
+      p_dados_novos: dados_novos || null,
+      p_ip_address: ipAddress,
+      p_user_agent: userAgent,
+    })
 
     if (error) {
       console.error('Erro ao registrar auditoria:', error)
@@ -94,7 +89,7 @@ Deno.serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ success: true, id: data.id, ip: ipAddress, userAgent }),
+      JSON.stringify({ success: true, id: data, ip: ipAddress, userAgent }),
       { headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' } }
     )
 
