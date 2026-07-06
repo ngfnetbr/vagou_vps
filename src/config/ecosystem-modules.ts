@@ -23,6 +23,8 @@ export interface EcosystemModuleMeta {
   logo: BrandLogoName;
   /** classes tailwind para o gradiente do card (tokens semânticos) */
   accentClass: string;
+  /** indica se o módulo está em fase beta/preview */
+  beta?: boolean;
 }
 
 export const ECOSYSTEM_MODULES: EcosystemModuleMeta[] = [
