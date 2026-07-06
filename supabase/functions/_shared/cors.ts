@@ -37,29 +37,13 @@ export const isLocalDevOrigin = (origin: string) =>
 export const isLovablePreviewOrigin = (origin: string) =>
   /^https:\/\/([a-z0-9-]+\.)*(lovableproject\.com|lovable\.app|lovable\.dev)$/i.test(origin);
 
-export const getCorsHeaders = (req: Request) => {
-  const origin = req.headers.get("origin");
-  const allowedOrigins = getAllowedOrigins();
-  const hasExplicitAllowList = Boolean(Deno.env.get("ALLOWED_ORIGINS")?.trim());
-
-  if (origin && (allowedOrigins.includes(origin) || isLocalDevOrigin(origin) || isLovablePreviewOrigin(origin))) {
-    return {
-      ...baseCorsHeaders,
-      "Access-Control-Allow-Origin": origin,
-      Vary: "Origin",
-    };
-  }
-
-
-  if (origin && hasExplicitAllowList) {
-    return {
-      ...baseCorsHeaders,
-      Vary: "Origin",
-    };
-  }
-
-  return baseCorsHeaders;
+export const getCorsHeaders = (_req: Request) => {
+  return {
+    ...baseCorsHeaders,
+    "Access-Control-Allow-Origin": "*",
+  };
 };
+
 
 export const getSafeRedirectTo = (req: Request, path: string) => {
   const rawBase = Deno.env.get("PUBLIC_SITE_URL")?.trim() || req.headers.get("origin")?.trim() || "";
