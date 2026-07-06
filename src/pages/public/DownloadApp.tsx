@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import appStoreBadge from "@/assets/app-store-badge.svg";
+import googlePlayBadge from "@/assets/google-play-badge.svg";
 import { Spinner } from "@/components/common/Spinner";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
