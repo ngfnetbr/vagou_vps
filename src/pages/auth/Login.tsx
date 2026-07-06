@@ -319,7 +319,7 @@ export default function Login() {
                   >
                     <BrandLogo name={m.logo} className="h-5 text-foreground/70" title={m.shortName} />
                     {m.beta && (
-                      <span className="rounded bg-warning/15 px-1 text-[9px] font-bold text-yellow-700 dark:text-warning">
+                      <span className="rounded bg-info/15 px-1 text-[9px] font-bold text-info">
                         BETA
                       </span>
                     )}
