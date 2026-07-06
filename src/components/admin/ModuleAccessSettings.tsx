@@ -116,7 +116,7 @@ export function ModuleAccessSettings() {
                             title={`Logo ${item.label}`}
                           />
                           {item.beta && (
-                            <Badge variant="info" className="text-[10px] px-1.5 py-0">
+                            <Badge variant="info" className="rounded-full text-[10px] px-2.5 py-0 tracking-wider">
                               BETA
                             </Badge>
                           )}
