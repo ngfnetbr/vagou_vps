@@ -136,6 +136,10 @@ export default defineConfig(async ({ mode }) => {
         "lucide-react": path.resolve(__dirname, "./src/icons/lucide-react"),
         "@sam": path.resolve(__dirname, "./modules/Sam/src"),
         "@sondagem": path.resolve(__dirname, "./modules/Sondagem/src"),
+        // html2pdf.js upstream ships a vulnerable jspdf 3.x transitively;
+        // we replace it with a local shim built on jspdf 4 + html2canvas.
+        "html2pdf.js": path.resolve(__dirname, "./src/lib/html2pdf-shim.ts"),
+
       },
     },
     test: {
