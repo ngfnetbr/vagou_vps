@@ -34,18 +34,22 @@ export const isAllowedOrigin = (origin: string) => getAllowedOrigins().includes(
 export const isLocalDevOrigin = (origin: string) =>
   /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
 
+export const isLovablePreviewOrigin = (origin: string) =>
+  /^https:\/\/([a-z0-9-]+\.)*(lovableproject\.com|lovable\.app|lovable\.dev)$/i.test(origin);
+
 export const getCorsHeaders = (req: Request) => {
   const origin = req.headers.get("origin");
   const allowedOrigins = getAllowedOrigins();
   const hasExplicitAllowList = Boolean(Deno.env.get("ALLOWED_ORIGINS")?.trim());
 
-  if (origin && (allowedOrigins.includes(origin) || isLocalDevOrigin(origin))) {
+  if (origin && (allowedOrigins.includes(origin) || isLocalDevOrigin(origin) || isLovablePreviewOrigin(origin))) {
     return {
       ...baseCorsHeaders,
       "Access-Control-Allow-Origin": origin,
       Vary: "Origin",
     };
   }
+
 
   if (origin && hasExplicitAllowList) {
     return {
