@@ -114,7 +114,13 @@ export function ModuleAccessSettings() {
                             name={item.logo}
                             className={`h-8 ${enabled ? "text-primary" : "text-muted-foreground"}`}
                             title={`Logo ${item.label}`}
-                        />
+                          />
+                          {item.beta && (
+                            <Badge variant="warning" className="text-[10px] px-1.5 py-0">
+                              BETA
+                            </Badge>
+                          )}
+                        </div>
                         <p className="text-xs text-muted-foreground">{item.desc}</p>
                       </div>
                       <Switch
