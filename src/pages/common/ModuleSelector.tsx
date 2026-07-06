@@ -5,6 +5,7 @@ import { useUserPermissions } from "@/hooks/api/permissoes-hooks";
 import { useConfiguracoesPublicas } from "@/hooks/api/configuracoes-hooks";
 import { getAccessibleModules } from "@/config/ecosystem-modules";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { BrandLogo } from "@/components/common/BrandLogo";
 
 
@@ -104,12 +105,17 @@ export default function ModuleSelector() {
                 className="group relative flex cursor-pointer flex-col items-center overflow-hidden border bg-card p-5 text-center transition-all duration-300 animate-fade-in hover:shadow-xl hover:-translate-y-1.5 hover:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring"
               >
                 <span className="pointer-events-none absolute inset-0 -translate-y-full bg-gradient-to-b from-primary/5 to-transparent transition-transform duration-500 group-hover:translate-y-0" />
-                <div className="relative mb-2 flex h-10 w-full items-center justify-center px-4">
+                <div className="relative mb-2 flex h-10 w-full items-center justify-center px-4 gap-2">
                   <BrandLogo
                     name={mod.logo}
                     className="h-6 text-primary transition-transform duration-300 group-hover:scale-105"
                     title={mod.name}
                   />
+                  {mod.beta && (
+                    <Badge variant="warning" className="text-[10px] px-1.5 py-0">
+                      BETA
+                    </Badge>
+                  )}
                 </div>
                 <p className="relative text-xs text-muted-foreground">{mod.description}</p>
               </Card>

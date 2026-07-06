@@ -23,6 +23,8 @@ export interface EcosystemModuleMeta {
   logo: BrandLogoName;
   /** classes tailwind para o gradiente do card (tokens semânticos) */
   accentClass: string;
+  /** indica se o módulo está em fase beta/preview */
+  beta?: boolean;
 }
 
 export const ECOSYSTEM_MODULES: EcosystemModuleMeta[] = [
@@ -45,6 +47,7 @@ export const ECOSYSTEM_MODULES: EcosystemModuleMeta[] = [
     icon: ClipboardCheck,
     logo: "sondar",
     accentClass: "from-secondary/70 to-secondary",
+    beta: true,
   },
   {
     id: "sam",
@@ -55,6 +58,7 @@ export const ECOSYSTEM_MODULES: EcosystemModuleMeta[] = [
     icon: HeartPulse,
     logo: "sam",
     accentClass: "from-accent/70 to-accent",
+    beta: true,
   },
 ];
 

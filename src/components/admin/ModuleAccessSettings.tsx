@@ -95,9 +95,9 @@ export function ModuleAccessSettings() {
           <CardContent className="pt-6">
             <div className="grid gap-4 md:grid-cols-3">
               {[
-                { logo: "vagou" as BrandLogoName, key: "habilitar_vagou", label: "VAGOU", desc: "Gestão de vagas em CMEIs." },
-                { logo: "sam" as BrandLogoName, key: "habilitar_sam", label: "SAM", desc: "Atendimento multiprofissional." },
-                { logo: "sondar" as BrandLogoName, key: "habilitar_sondagem", label: "SONDAR", desc: "Sondagem pedagógica." },
+                { logo: "vagou" as BrandLogoName, key: "habilitar_vagou", label: "VAGOU", desc: "Gestão de vagas em CMEIs.", beta: false },
+                { logo: "sam" as BrandLogoName, key: "habilitar_sam", label: "SAM", desc: "Atendimento multiprofissional.", beta: true },
+                { logo: "sondar" as BrandLogoName, key: "habilitar_sondagem", label: "SONDAR", desc: "Sondagem pedagógica.", beta: true },
               ].map((item) => {
                 const enabled = (config as any)?.[item.key] ?? true;
                 return (
@@ -109,11 +109,18 @@ export function ModuleAccessSettings() {
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="space-y-3">
-                        <BrandLogo
-                          name={item.logo}
-                          className={`h-8 ${enabled ? "text-primary" : "text-muted-foreground"}`}
-                          title={`Logo ${item.label}`}
-                        />
+                        <div className="flex items-center gap-2">
+                          <BrandLogo
+                            name={item.logo}
+                            className={`h-8 ${enabled ? "text-primary" : "text-muted-foreground"}`}
+                            title={`Logo ${item.label}`}
+                          />
+                          {item.beta && (
+                            <Badge variant="warning" className="text-[10px] px-1.5 py-0">
+                              BETA
+                            </Badge>
+                          )}
+                        </div>
                         <p className="text-xs text-muted-foreground">{item.desc}</p>
                       </div>
                       <Switch

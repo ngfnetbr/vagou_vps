@@ -85,11 +85,15 @@ export default function SuperAdminOverview() {
               const enabled = moduleStatus[m.id];
               return (
                 <div key={m.id} className="card-interactive flex items-center justify-between rounded-lg border p-4">
-
                   <div className="flex items-center gap-3">
                     <div className="flex h-14 items-center justify-center rounded-lg bg-muted px-4">
                       <BrandLogo name={m.logo} className="h-9 text-foreground" title={m.name} />
                     </div>
+                    {m.beta && (
+                      <Badge variant="warning" className="text-[10px] px-1.5 py-0">
+                        BETA
+                      </Badge>
+                    )}
                   </div>
                   {enabled ? (
                     <Badge variant="secondary" className="gap-1">
