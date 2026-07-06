@@ -1366,7 +1366,7 @@ export function CriancaDialog({ open, onOpenChange, criancaId, tipoUnidadeOverri
         observacoes: (data as any).observacoes || null,
         prioridade: (programasSociaisDerivado ? "Social" : "Geral") as "Social" | "Geral",
         status: isSchoolMode ? (((data as any).sexo === "Feminino") ? "Matriculada" : "Matriculado") : undefined,
-        origem_cadastro: isSchoolMode ? schoolMode!.moduloOrigem : undefined,
+        origem_cadastro: isSchoolMode ? schoolMode!.moduloOrigem : "admin",
         modulo_gestor: isSchoolMode ? "sam_sondar" : undefined,
         ignorar_automacoes_vagou: isSchoolMode ? true : undefined,
         ...(dadosIncompletosToSave !== undefined ? { dados_incompletos: dadosIncompletosToSave } : {}),
