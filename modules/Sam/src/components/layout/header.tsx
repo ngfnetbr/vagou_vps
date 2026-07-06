@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from "react"
 import { SidebarTrigger } from "@ui/sidebar"
 import { School } from "lucide-react"

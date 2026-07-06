@@ -56,7 +56,8 @@ import UsuariosPage from "./pages/admin/Usuarios";
 import MensagensPage from "./pages/admin/Mensagens";
 import DiretorDashboard from "./pages/admin/DiretorDashboard";
 import CursosAdminPage from "./pages/admin/Cursos";
-import { SamModuleRoutes, SondagemModuleRoutes } from "@/module-stubs";
+import { SamModuleRoutes } from "@sam/App";
+import { SondagemModuleRoutes } from "@sondagem/App";
 
 import ResponsavelDashboard from "./pages/responsavel/Dashboard";
 import ResponsavelPerfil from "./pages/responsavel/Perfil";

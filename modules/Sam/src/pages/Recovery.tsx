@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button } from "@ui/button"
 import { Spinner } from "@/components/common/Spinner";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@ui/card"

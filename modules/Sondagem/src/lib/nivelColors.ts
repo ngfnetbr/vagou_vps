@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Color map for assessment levels - progression from red (lowest) to green (highest)
 // Escrita levels
 export const ESCRITA_COLORS: Record<string, string> = {

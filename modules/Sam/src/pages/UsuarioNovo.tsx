@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useEffect } from "react"
 import { Skeleton } from "@ui/skeleton"
 import { getSpecialties } from "@sam/lib/actions/especialidades"

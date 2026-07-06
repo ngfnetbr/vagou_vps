@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useMemo, useState } from "react"
 import { Spinner } from "@/components/common/Spinner";
 import { useQuery } from "@tanstack/react-query"

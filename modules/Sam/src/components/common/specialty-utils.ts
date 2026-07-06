@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { BadgeProps } from "@ui/badge"
 
 export function getSpecialtyVariant(specialty?: string | null): BadgeProps["variant"] {

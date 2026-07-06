@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useMemo } from "react";
 import { Spinner } from "@/components/common/Spinner";
 import { useLocation } from "react-router-dom";

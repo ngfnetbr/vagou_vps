@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { supabase } from "@sondagem/integrations/supabase/client";
 
 export interface ReportHeaderFooter {

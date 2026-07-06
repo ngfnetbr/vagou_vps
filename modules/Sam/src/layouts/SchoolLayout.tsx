@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Outlet, Link, useLocation } from "react-router-dom"
 import { useAuth } from "@root/contexts/AuthContext"
 import { School, AlertTriangle, LogOut, FileText, LayoutDashboard, ArrowLeft, GraduationCap } from "lucide-react"

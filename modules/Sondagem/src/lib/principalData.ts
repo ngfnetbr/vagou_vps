@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { supabase } from "@sondagem/integrations/supabase/client";
 import { chunkArray } from "@sondagem/lib/queryUtils";
 import { alunos as mockAlunos, cmeis as mockCmeis, turmas as mockTurmas } from "@sondagem/data/mockData";

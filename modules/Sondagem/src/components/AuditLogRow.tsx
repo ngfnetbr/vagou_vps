@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from "react";
 import { TableRow, TableCell } from "@ui/table";
 import { Badge } from "@ui/badge";

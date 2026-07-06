@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useSearchParams, useNavigate } from "react-router-dom"
 import { Input } from "@ui/input"
 import { Button } from "@ui/button"

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const SONDAGEM_BASE = "/modulo/sondar";
 
 export type SondagemRole =

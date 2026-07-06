@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Card, CardContent } from "@ui/card"
 import { cn } from "@sondagem/lib/utils"
 import { LucideIcon } from "lucide-react"

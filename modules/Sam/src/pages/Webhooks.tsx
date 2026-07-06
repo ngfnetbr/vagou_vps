@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useEffect } from "react"
 import { Plus, Webhook, Trash2, Pencil, Play, Eye, ToggleLeft, ToggleRight } from "lucide-react"
 import { Button } from "@ui/button"

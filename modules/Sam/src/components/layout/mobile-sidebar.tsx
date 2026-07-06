@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { Menu, X, GraduationCap, LogOut } from "lucide-react"

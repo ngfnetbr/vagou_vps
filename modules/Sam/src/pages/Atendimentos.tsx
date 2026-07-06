@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useMemo, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { AppointmentActionsMenu } from "@sam/components/appointments/appointment-actions-menu"

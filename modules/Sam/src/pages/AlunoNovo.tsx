@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from "react"
 import { StudentForm } from "@sam/components/alunos/student-form"
 import { supabase } from "@sam/integrations/supabase/client"

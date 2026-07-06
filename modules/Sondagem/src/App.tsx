@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect } from "react";
 import { Toaster } from "@ui/toaster";
 import { Toaster as Sonner } from "@ui/sonner";

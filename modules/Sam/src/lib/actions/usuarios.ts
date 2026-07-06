@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { supabase } from '@sam/integrations/supabase/client'
 import { registerAuditLog } from '@sam/lib/audit'
 

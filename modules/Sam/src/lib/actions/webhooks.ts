@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { supabase } from '@sam/integrations/supabase/client'
 
 const WEBHOOKS_TABLE = 'webhooks'

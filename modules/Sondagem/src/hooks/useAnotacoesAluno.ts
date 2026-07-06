@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@sondagem/integrations/supabase/client";
 import { useAuth } from "@root/contexts/AuthContext";

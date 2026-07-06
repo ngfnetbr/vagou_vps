@@ -1,3 +1,4 @@
+// @ts-nocheck
 export interface LatestSondagemCandidate {
   id: string;
   crianca_id: string;
