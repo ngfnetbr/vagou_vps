@@ -320,9 +320,9 @@ export default function Login() {
                   >
                     <BrandLogo name={m.logo} className="h-5 text-foreground/70" title={m.shortName} />
                     {m.beta && (
-                      <span className="rounded bg-info/15 px-1 text-[9px] font-bold text-info">
+                      <Badge variant="info" className="rounded-full px-2 text-[9px] tracking-wider">
                         BETA
-                      </span>
+                      </Badge>
                     )}
                   </span>
                 ))}
