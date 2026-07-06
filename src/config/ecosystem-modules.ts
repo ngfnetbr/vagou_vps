@@ -47,6 +47,7 @@ export const ECOSYSTEM_MODULES: EcosystemModuleMeta[] = [
     icon: ClipboardCheck,
     logo: "sondar",
     accentClass: "from-secondary/70 to-secondary",
+    beta: true,
   },
   {
     id: "sam",
@@ -57,6 +58,7 @@ export const ECOSYSTEM_MODULES: EcosystemModuleMeta[] = [
     icon: HeartPulse,
     logo: "sam",
     accentClass: "from-accent/70 to-accent",
+    beta: true,
   },
 ];
 
