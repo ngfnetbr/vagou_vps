@@ -40,9 +40,12 @@ Deno.serve(async (req) => {
       )
     }
 
+    // Service-role client — do NOT forward the user's Authorization header,
+    // otherwise PostgREST enforces RLS as that user and the insert fails.
     const supabase = createClient(supabaseUrl, supabaseServiceKey, {
-      global: { headers: { Authorization: authHeader } }
+      auth: { persistSession: false, autoRefreshToken: false },
     })
+
 
     // Get user ID from auth if available
     let userId = null
