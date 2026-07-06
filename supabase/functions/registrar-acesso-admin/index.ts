@@ -28,7 +28,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    if (!path.startsWith("/admin")) {
+    if (!path.startsWith("/admin") && !path.startsWith("/modulo/vagou/admin")) {
       return new Response(JSON.stringify({ error: "path_invalido" }), {
         status: 400,
         headers: { ...getCorsHeaders(req), "Content-Type": "application/json" },
