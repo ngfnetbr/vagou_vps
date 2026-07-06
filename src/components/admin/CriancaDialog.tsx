@@ -2283,7 +2283,7 @@ export function CriancaDialog({ open, onOpenChange, criancaId, tipoUnidadeOverri
                 <div>
                   <Label>Instituição</Label>
                   <Select
-                    value={cmeiAtualSelecionado || ""}
+                    value={(cmeiAtualSelecionado as string) || ""}
                     onValueChange={(value) => {
                       setValue("cmei_atual_id", value, { shouldDirty: true, shouldValidate: true });
                       setValue("turma_atual_id", "", { shouldDirty: true, shouldValidate: true });
