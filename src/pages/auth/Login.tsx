@@ -318,6 +318,11 @@ export default function Login() {
                     className="inline-flex items-center gap-1.5 rounded-full border bg-muted/40 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:bg-primary/10 hover:border-primary/30"
                   >
                     <BrandLogo name={m.logo} className="h-5 text-foreground/70" title={m.shortName} />
+                    {m.beta && (
+                      <span className="rounded bg-warning/15 px-1 text-[9px] font-bold text-yellow-700 dark:text-warning">
+                        BETA
+                      </span>
+                    )}
                   </span>
                 ))}
               </div>
