@@ -112,7 +112,7 @@ export default function ModuleSelector() {
                     title={mod.name}
                   />
                   {mod.beta && (
-                    <Badge variant="info" className="rounded-full text-[10px] px-2.5 py-0 tracking-wider">
+                    <Badge variant="info" className="text-[10px] px-1.5 py-0">
                       BETA
                     </Badge>
                   )}

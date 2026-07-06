@@ -90,7 +90,7 @@ export default function SuperAdminOverview() {
                       <BrandLogo name={m.logo} className="h-9 text-foreground" title={m.name} />
                     </div>
                     {m.beta && (
-                      <Badge variant="info" className="rounded-full text-[10px] px-2.5 py-0 tracking-wider">
+                      <Badge variant="info" className="text-[10px] px-1.5 py-0">
                         BETA
                       </Badge>
                     )}
