@@ -20,7 +20,7 @@ export const PublicHeader = () => {
   
   const autenticacaoPublica = config?.autenticacao_publica;
   const logoUrl = config?.logo_empresa_url || hfLogo;
-  const logoLink = "https://hfgestaopublica.com.br/";
+  const logoLink = (config as any)?.logo_empresa_link || "https://hfgestaopublica.com.br/";
 
   const navItems = [
     { to: "/modulo/vagou/publico", icon: Home, label: "Início", exact: true },
