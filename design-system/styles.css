@@ -1,0 +1,552 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Gov.br Color System - #1351b4 = 217 81% 39% */
+    --govbr-blue-main: 217 81% 39%;
+    --govbr-blue-dark: 217 82% 17%;
+    --govbr-blue-light: 217 100% 95%;
+    --govbr-green: 142 76% 36%;
+    --govbr-yellow: 48 100% 67%;
+    --govbr-gray-1: 210 17% 98%;
+    --govbr-gray-2: 214 15% 91%;
+    --govbr-gray-3: 213 12% 70%;
+    --govbr-gray-4: 215 14% 34%;
+    
+    /* Semantic Tokens */
+    --background: 0 0% 100%;
+    --foreground: var(--govbr-blue-dark);
+    
+    --card: 0 0% 100%;
+    --card-foreground: var(--govbr-blue-dark);
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--govbr-blue-dark);
+    
+    --primary: var(--govbr-blue-main);
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: var(--govbr-gray-1);
+    --secondary-foreground: var(--govbr-blue-dark);
+    
+    --muted: var(--govbr-gray-2);
+    --muted-foreground: var(--govbr-gray-4);
+    
+    --accent: var(--govbr-green);
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: var(--govbr-gray-2);
+    --input: var(--govbr-gray-2);
+    --ring: var(--govbr-blue-main);
+    
+    --radius: 0.5rem;
+    
+    /* Custom Gov.br tokens */
+    --header-bg: var(--govbr-blue-main);
+    --header-fg: 0 0% 100%;
+    --success: var(--govbr-green);
+    --warning: var(--govbr-yellow);
+    --info: 199 89% 48%;
+    
+    /* Chart colors */
+    --chart-success: 142 76% 36%;
+    --chart-warning: 48 100% 50%;
+    --chart-info: 199 89% 48%;
+    --chart-purple: 280 70% 50%;
+    --chart-muted: 213 12% 70%;
+    
+    --sidebar-background: 214 73% 38%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 214 73% 38%;
+    --sidebar-accent: 214 73% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 214 73% 45%;
+    --sidebar-ring: 0 0% 100%;
+  }
+  
+  .dark {
+    /* ========================================
+       DARK MODE - Tema NEUTRO padrão
+       Independente das cores configuradas
+       ======================================== */
+    
+    /* Cores Gov.br resetadas para neutro no dark */
+    --govbr-blue-main: 0 0% 85%;         /* Neutro claro */
+    --govbr-blue-dark: 0 0% 95%;         /* Quase branco */
+    --govbr-blue-light: 0 0% 15%;        /* Neutro escuro */
+    --govbr-green: 142 71% 45%;          /* Verde mantido */
+    --govbr-yellow: 45 93% 58%;          /* Amarelo mantido */
+    --govbr-gray-1: 0 0% 7%;             /* Background */
+    --govbr-gray-2: 0 0% 12%;            /* Cards */
+    --govbr-gray-3: 0 0% 55%;            /* Texto muted */
+    --govbr-gray-4: 0 0% 95%;            /* Texto principal */
+    
+    /* ===== BACKGROUNDS - Neutro escuro ===== */
+    --background: 0 0% 7%;               /* #121212 - Fundo neutro */
+    --foreground: 0 0% 95%;              /* Texto claro */
+    
+    /* ===== CARDS - Elevação sutil ===== */
+    --card: 0 0% 10%;                    /* Card background */
+    --card-foreground: 0 0% 95%;         /* Card text */
+    
+    --popover: 0 0% 12%;                 /* Popover background */
+    --popover-foreground: 0 0% 95%;      /* Popover text */
+    
+    /* ===== PRIMARY - Neutro (branco/cinza claro) ===== */
+    --primary: 0 0% 95%;                 /* Branco/cinza claro */
+    --primary-foreground: 0 0% 9%;       /* Texto escuro */
+    
+    /* ===== SECONDARY ===== */
+    --secondary: 0 0% 15%;               /* Background secundário */
+    --secondary-foreground: 0 0% 95%;    /* Texto claro */
+    
+    /* ===== MUTED ===== */
+    --muted: 0 0% 15%;                   /* Background muted */
+    --muted-foreground: 0 0% 65%;        /* Texto muted legível */
+    
+    /* ===== ACCENT ===== */
+    --accent: 0 0% 18%;                  /* Hover states */
+    --accent-foreground: 0 0% 95%;       /* Texto sobre accent */
+    
+    /* ===== DESTRUCTIVE ===== */
+    --destructive: 0 62% 55%;            /* Vermelho */
+    --destructive-foreground: 0 0% 100%; /* Branco */
+    
+    /* ===== BORDERS & INPUTS ===== */
+    --border: 0 0% 20%;                  /* Bordas visíveis */
+    --input: 0 0% 15%;                   /* Input background */
+    --ring: 0 0% 80%;                    /* Focus ring neutro */
+    
+    /* ===== HEADER - Neutro ===== */
+    --header-bg: 0 0% 9%;                /* Header escuro */
+    --header-fg: 0 0% 95%;               /* Texto claro */
+    
+    /* ===== STATUS COLORS - Mantidos vibrantes ===== */
+    --success: 142 71% 45%;              /* Verde */
+    --warning: 45 93% 58%;               /* Amarelo */
+    --info: 199 89% 48%;                 /* Azul info */
+    
+    /* ===== CHART COLORS ===== */
+    --chart-success: 142 71% 45%;
+    --chart-warning: 45 93% 58%;
+    --chart-info: 199 89% 48%;
+    --chart-purple: 262 83% 68%;
+    --chart-muted: 0 0% 50%;
+    
+    /* ===== SIDEBAR - Neutro ===== */
+    --sidebar-background: 0 0% 7%;       /* Mesmo do background */
+    --sidebar-foreground: 0 0% 95%;      /* Texto claro */
+    --sidebar-primary: 0 0% 95%;         /* Neutro claro */
+    --sidebar-primary-foreground: 0 0% 9%;
+    --sidebar-accent: 0 0% 15%;          /* Item hover */
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 18%;          /* Bordas */
+    --sidebar-ring: 0 0% 80%;
+  }
+
+  /* ========================================
+     DARK MODE - Correções de Contraste
+     ======================================== */
+  
+  /* Garantir que botões tenham contraste adequado no dark mode */
+  .dark .bg-white,
+  .dark [class*="bg-white"] {
+    background-color: hsl(0 0% 15%) !important;
+    color: hsl(0 0% 95%) !important;
+  }
+
+  /* Botões outline no dark mode */
+  .dark button[class*="outline"],
+  .dark .btn-outline,
+  .dark [data-variant="outline"] {
+    border-color: hsl(0 0% 30%);
+    color: hsl(0 0% 95%);
+  }
+  
+  .dark button[class*="outline"]:hover,
+  .dark .btn-outline:hover {
+    background-color: hsl(0 0% 20%);
+    color: hsl(0 0% 95%);
+  }
+
+  /* Links no dark mode */
+  .dark a:not([class*="bg-"]):hover {
+    color: hsl(0 0% 100%);
+  }
+
+  /* Garantir contraste em cards/containers */
+  .dark .bg-card,
+  .dark [class*="bg-card"] {
+    background-color: hsl(0 0% 10%);
+  }
+
+  /* Inputs no dark mode */
+  .dark input,
+  .dark textarea,
+  .dark select {
+    background-color: hsl(0 0% 12%);
+    border-color: hsl(0 0% 25%);
+    color: hsl(0 0% 95%);
+  }
+  
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    color: hsl(0 0% 50%);
+  }
+
+  /* Dropdown menus no dark mode */
+  .dark [role="menu"],
+  .dark [role="listbox"],
+  .dark [data-radix-popper-content-wrapper] > div {
+    background-color: hsl(0 0% 12%) !important;
+    border-color: hsl(0 0% 25%) !important;
+  }
+
+  /* Menu items hover */
+  .dark [role="menuitem"]:hover,
+  .dark [role="option"]:hover,
+  .dark [cmdk-item]:hover {
+    background-color: hsl(0 0% 18%) !important;
+    color: hsl(0 0% 100%) !important;
+  }
+
+  /* Tables no dark mode */
+  .dark table th {
+    background-color: hsl(0 0% 10%);
+    color: hsl(0 0% 90%);
+  }
+  
+  .dark table td {
+    background-color: hsl(0 0% 7%);
+    color: hsl(0 0% 90%);
+  }
+  
+  .dark table tr:hover td {
+    background-color: hsl(0 0% 12%);
+  }
+
+  /* Badges no dark mode */
+  .dark .badge,
+  .dark [class*="Badge"] {
+    border-color: hsl(0 0% 30%);
+  }
+
+  /* Tabs no dark mode */
+  .dark [role="tablist"] {
+    background-color: hsl(0 0% 10%);
+  }
+  
+  .dark [role="tab"][data-state="active"] {
+    background-color: hsl(0 0% 15%);
+    color: hsl(0 0% 100%);
+  }
+
+  /* Scrollbar no dark mode */
+  .dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: hsl(0 0% 10%);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: hsl(0 0% 25%);
+    border-radius: 4px;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: hsl(0 0% 35%);
+  }
+
+  /* Dialogs/Modals no dark mode */
+  .dark [role="dialog"] {
+    background-color: hsl(0 0% 10%);
+    border-color: hsl(0 0% 20%);
+  }
+
+  /* Tooltips no dark mode */
+  .dark [role="tooltip"] {
+    background-color: hsl(0 0% 15%);
+    color: hsl(0 0% 95%);
+    border-color: hsl(0 0% 25%);
+  }
+
+  /* Alert/Notifications no dark mode */
+  .dark [role="alert"] {
+    background-color: hsl(0 0% 12%);
+    border-color: hsl(0 0% 25%);
+  }
+
+  /* ========================================
+     HOVER STATES - Garantir contraste no dark mode
+     ======================================== */
+  
+  /* Botões com fundo claro: manter texto escuro no hover */
+  .dark button.bg-white:hover,
+  .dark button[class*="bg-white"]:hover,
+  .dark a.bg-white:hover,
+  .dark a[class*="bg-white"]:hover {
+    color: hsl(0 0% 10%) !important;
+  }
+
+  /* Botões ghost/outline: manter texto claro no hover */
+  .dark button[class*="ghost"]:hover,
+  .dark button[class*="secondary"]:hover,
+  .dark [data-variant="ghost"]:hover,
+  .dark [data-variant="secondary"]:hover {
+    background-color: hsl(0 0% 20%) !important;
+    color: hsl(0 0% 95%) !important;
+  }
+
+  /* Links em listas e navegação */
+  .dark nav a:hover,
+  .dark ul a:hover,
+  .dark li a:hover {
+    color: hsl(0 0% 100%) !important;
+  }
+
+  /* Itens de lista clicáveis */
+  .dark [role="button"]:hover,
+  .dark .cursor-pointer:hover {
+    color: hsl(0 0% 95%);
+  }
+
+  /* Botões com bg-primary no dark mode - SEMPRE texto escuro para contraste */
+  .dark button[class*="bg-primary"],
+  .dark a[class*="bg-primary"],
+  .dark button[class*="bg-primary"]:hover,
+  .dark a[class*="bg-primary"]:hover,
+  .dark [class*="bg-primary"]:hover {
+    color: hsl(222.2 47.4% 11.2%) !important;
+  }
+
+  /* Toggle buttons com primary */
+  .dark [data-state="on"][class*="bg-primary"],
+  .dark [data-state="active"][class*="bg-primary"] {
+    color: hsl(222.2 47.4% 11.2%) !important;
+  }
+
+  /* Dropdown items - garantir contraste */
+  .dark [role="menuitem"],
+  .dark [role="option"],
+  .dark [data-radix-collection-item] {
+    color: hsl(0 0% 90%);
+  }
+
+  .dark [role="menuitem"]:hover,
+  .dark [role="option"]:hover,
+  .dark [data-radix-collection-item]:hover,
+  .dark [role="menuitem"]:focus,
+  .dark [role="option"]:focus {
+    background-color: hsl(0 0% 20%) !important;
+    color: hsl(0 0% 100%) !important;
+  }
+
+  /* Table row hover */
+  .dark tr:hover td {
+    background-color: hsl(0 0% 15%) !important;
+    color: hsl(0 0% 95%) !important;
+  }
+
+  /* Cards e elementos clicáveis */
+  .dark .hover\:bg-accent:hover {
+    background-color: hsl(0 0% 15%) !important;
+    color: hsl(0 0% 95%) !important;
+  }
+
+  /* Sidebar items */
+  .dark [data-sidebar="menu-button"]:hover {
+    background-color: hsl(0 0% 15%) !important;
+    color: hsl(0 0% 95%) !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Prevent horizontal overflow globally */
+  html, body {
+    @apply overflow-x-hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Smooth transitions for theme change */
+  .dark * {
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+  
+  /* Gov.br specific styles */
+  .govbr-header {
+    @apply bg-[hsl(var(--header-bg))] text-[hsl(var(--header-fg))];
+  }
+  
+  .govbr-section {
+    @apply py-8 md:py-12 lg:py-16;
+  }
+  
+  .govbr-container {
+    @apply container mx-auto px-4 max-w-full overflow-x-hidden;
+  }
+}
+
+/* Mobile-friendly table wrapper */
+@layer components {
+  .table-wrapper {
+    @apply w-full overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0;
+  }
+  
+  /* Ensure cards don't overflow */
+  .card-content-mobile {
+    @apply overflow-hidden break-words;
+  }
+  
+  /* Mobile-friendly flex container */
+  .flex-mobile {
+    @apply flex flex-col sm:flex-row gap-2 sm:gap-4;
+  }
+
+  /* Safe area padding for devices with notch */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  /* Mobile touch-friendly tap targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mobile card styles */
+  .mobile-card {
+    @apply rounded-lg border bg-card p-3 shadow-sm;
+  }
+
+  /* Mobile-friendly button row */
+  .mobile-action-row {
+    @apply flex flex-wrap gap-2;
+  }
+}
+
+/* ========== Accessibility Styles ========== */
+
+/* Font Size Scaling - applied to html element */
+html.font-size-default {
+  font-size: 16px !important;
+}
+
+html.font-size-medium {
+  font-size: 18px !important;
+}
+
+html.font-size-large {
+  font-size: 20px !important;
+}
+
+html.font-size-medium body,
+html.font-size-large body {
+  line-height: 1.6;
+}
+
+html.font-size-large h1,
+html.font-size-large h2,
+html.font-size-large h3 {
+  line-height: 1.3;
+}
+
+/* ========== Table Density Styles ========== */
+
+/* Smooth transitions for density change */
+table,
+table th,
+table td,
+table button,
+table .badge,
+table [class*="Badge"],
+[role="table"],
+[role="row"],
+[role="cell"] {
+  transition: padding 0.2s ease, font-size 0.2s ease, height 0.2s ease, min-height 0.2s ease;
+}
+
+/* Compact table mode */
+html.table-density-compact table {
+  font-size: 0.8125rem;
+}
+
+html.table-density-compact th,
+html.table-density-compact td {
+  padding: 0.375rem 0.5rem !important;
+}
+
+html.table-density-compact [role="row"] {
+  min-height: auto;
+}
+
+html.table-density-compact .table-cell,
+html.table-density-compact [class*="TableCell"] {
+  padding: 0.375rem 0.5rem !important;
+}
+
+/* Compact badges and buttons in tables */
+html.table-density-compact table .badge,
+html.table-density-compact table [class*="Badge"] {
+  font-size: 0.6875rem;
+  padding: 0.125rem 0.375rem;
+}
+
+html.table-density-compact table button {
+  height: auto;
+  min-height: 1.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+html.table-density-compact table button svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+/* Default table mode - ensure consistent styling */
+html.table-density-default table th,
+html.table-density-default table td {
+  padding: 0.75rem 1rem;
+}

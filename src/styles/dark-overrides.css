@@ -1,0 +1,192 @@
+.dark .bg-white,
+.dark [class*="bg-white"]:not([class*=":bg-white"]) {
+  background-color: hsl(0 0% 15%) !important;
+  color: hsl(0 0% 95%) !important;
+}
+
+.dark button[class*="outline"],
+.dark .btn-outline,
+.dark [data-variant="outline"] {
+  border-color: hsl(0 0% 30%);
+  color: hsl(0 0% 95%);
+}
+
+.dark button[class*="outline"]:hover,
+.dark .btn-outline:hover {
+  background-color: hsl(0 0% 20%);
+  color: hsl(0 0% 95%);
+}
+
+.dark a:not([class*="bg-"]):hover {
+  color: hsl(0 0% 100%);
+}
+
+.dark .bg-card,
+.dark [class*="bg-card"] {
+  background-color: hsl(0 0% 10%);
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: hsl(0 0% 12%);
+  border-color: hsl(0 0% 25%);
+  color: hsl(0 0% 95%);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: hsl(0 0% 50%);
+}
+
+.dark [role="menu"],
+.dark [role="listbox"],
+.dark [data-radix-popper-content-wrapper] > div {
+  background-color: hsl(0 0% 12%) !important;
+  border-color: hsl(0 0% 25%) !important;
+}
+
+.dark [role="menuitem"]:hover,
+.dark [role="option"]:hover,
+.dark [cmdk-item]:hover {
+  background-color: hsl(0 0% 18%) !important;
+  color: hsl(0 0% 100%) !important;
+}
+
+.dark table th {
+  background-color: hsl(0 0% 10%);
+  color: hsl(0 0% 90%);
+}
+
+.dark table td {
+  background-color: hsl(0 0% 7%);
+  color: hsl(0 0% 90%);
+}
+
+.dark table tr:hover td {
+  background-color: hsl(0 0% 12%);
+}
+
+.dark .badge,
+.dark [class*="Badge"] {
+  border-color: hsl(0 0% 30%);
+}
+
+.dark [role="tablist"] {
+  background-color: hsl(0 0% 10%);
+}
+
+.dark [role="tab"][data-state="active"] {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 100%);
+}
+
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: hsl(0 0% 10%);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 25%);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 0% 35%);
+}
+
+.dark [role="dialog"] {
+  background-color: hsl(0 0% 10%);
+  border-color: hsl(0 0% 20%);
+}
+
+.dark [role="tooltip"] {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 95%);
+  border-color: hsl(0 0% 25%);
+}
+
+.dark [role="alert"] {
+  background-color: hsl(0 0% 12%);
+  border-color: hsl(0 0% 25%);
+}
+
+.dark button.bg-white:hover,
+.dark button[class*="bg-white"]:not([class*=":bg-white"]):hover,
+.dark a.bg-white:hover,
+.dark a[class*="bg-white"]:not([class*=":bg-white"]):hover {
+  background-color: hsl(0 0% 20%) !important;
+  color: hsl(0 0% 100%) !important;
+}
+
+.dark button[class*="ghost"]:hover,
+.dark button[class*="secondary"]:hover,
+.dark [data-variant="ghost"]:hover,
+.dark [data-variant="secondary"]:hover {
+  background-color: hsl(0 0% 20%) !important;
+  color: hsl(0 0% 95%) !important;
+}
+
+.dark nav a:hover,
+.dark ul a:hover,
+.dark li a:hover {
+  color: hsl(0 0% 100%) !important;
+}
+
+.dark [role="button"]:hover,
+.dark .cursor-pointer:hover {
+  color: hsl(0 0% 95%);
+}
+
+.dark button[class*="bg-primary"],
+.dark a[class*="bg-primary"],
+.dark button[class*="bg-primary"]:hover,
+.dark a[class*="bg-primary"]:hover,
+.dark [class*="bg-primary"]:hover {
+  color: hsl(0 0% 95%) !important;
+}
+
+.dark [data-state="on"][class*="bg-primary"],
+.dark [data-state="active"][class*="bg-primary"] {
+  color: hsl(0 0% 95%) !important;
+}
+
+.dark [role="menuitem"],
+.dark [role="option"],
+.dark [data-radix-collection-item] {
+  color: hsl(0 0% 90%);
+}
+
+.dark [role="menuitem"]:hover,
+.dark [role="option"]:hover,
+.dark [data-radix-collection-item]:hover,
+.dark [role="menuitem"]:focus,
+.dark [role="option"]:focus {
+  background-color: hsl(0 0% 20%) !important;
+  color: hsl(0 0% 100%) !important;
+}
+
+.dark tr:hover td {
+  background-color: hsl(0 0% 15%) !important;
+  color: hsl(0 0% 95%) !important;
+}
+
+.dark .hover\\:bg-accent:hover {
+  background-color: hsl(0 0% 15%) !important;
+  color: hsl(0 0% 95%) !important;
+}
+
+.dark [data-sidebar="menu-button"]:hover {
+  background-color: hsl(0 0% 15%) !important;
+  color: hsl(0 0% 95%) !important;
+}
+
+/* Logo/brasão squares must always stay white in any theme */
+.logo-surface,
+.dark .logo-surface {
+  background-color: #ffffff !important;
+}

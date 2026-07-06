@@ -1,0 +1,1 @@
+UPDATE sondagens SET periodo = '2026-1' WHERE periodo = '' OR periodo IS NULL;

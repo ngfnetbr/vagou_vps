@@ -1,0 +1,150 @@
+name: Supabase - Deploy (Schema + Functions)
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+concurrency:
+  group: supabase-deploy
+  cancel-in-progress: false
+
+jobs:
+  lint_migrations:
+    name: Validar migrations (DDL-only)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check changed migrations are DDL-only
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+
+          # workflow_dispatch may not have a usable "before"
+          if [[ -z "${BEFORE}" || "${BEFORE}" == "0000000000000000000000000000000000000000" ]]; then
+            BEFORE="$(git rev-parse "${AFTER}~1" 2>/dev/null || true)"
+          fi
+
+          if [[ -z "${BEFORE}" ]]; then
+            echo "Could not determine commit range for migration check; skipping."
+            exit 0
+          fi
+
+          mapfile -t CHANGED < <(git diff --name-only "${BEFORE}" "${AFTER}" -- "supabase/migrations/*.sql" || true)
+          if [[ "${#CHANGED[@]}" -eq 0 ]]; then
+            echo "No migration files changed."
+            exit 0
+          fi
+
+          printf '%s\n' "Changed migration files:" "${CHANGED[@]}"
+          node scripts/ci/check-migrations-ddl-only.mjs "${CHANGED[@]}"
+
+      - name: Check migration versions are unique
+        run: node scripts/ci/check-migrations-unique-versions.mjs
+
+  deploy:
+    name: Deploy schema/functions (migrations)
+    runs-on: ubuntu-latest
+    needs: lint_migrations
+
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_TARGETS_JSON: ${{ secrets.SUPABASE_TARGETS_JSON }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Deploy migrations para os projetos configurados
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${SUPABASE_TARGETS_JSON:-}" ]]; then
+            echo "SUPABASE_TARGETS_JSON is empty. Configure it as a GitHub Actions secret."
+            exit 1
+          fi
+
+          echo "${SUPABASE_TARGETS_JSON}" > targets.json
+
+          node - <<'NODE'
+          import fs from "node:fs";
+          const raw = fs.readFileSync("targets.json", "utf8");
+          const targets = JSON.parse(raw);
+          if (!Array.isArray(targets) || targets.length === 0) {
+            console.error("SUPABASE_TARGETS_JSON must be a non-empty JSON array.");
+            process.exit(1);
+          }
+          for (const t of targets) {
+            for (const k of ["name", "project_ref", "db_password"]) {
+              if (!t?.[k] || typeof t[k] !== "string") {
+                console.error("Invalid target entry. Missing:", k, "Entry:", t);
+                process.exit(1);
+              }
+            }
+          }
+          console.log("Targets OK:", targets.map((t) => t.name).join(", "));
+          NODE
+
+          while IFS= read -r line; do
+            TARGET_NAME="$(echo "$line" | cut -f1)"
+            PROJECT_REF="$(echo "$line" | cut -f2)"
+            DB_PASSWORD="$(echo "$line" | cut -f3-)"
+
+            echo ""
+            echo "=============================="
+            echo "Target: ${TARGET_NAME}"
+            echo "Project: ${PROJECT_REF}"
+            echo "=============================="
+
+            echo "Linking project..."
+            supabase link --project-ref "${PROJECT_REF}"
+
+            echo "Applying migrations..."
+            if ! OUT="$(supabase db push --linked --password "${DB_PASSWORD}" --yes 2>&1)"; then
+              echo "$OUT"
+
+              if echo "$OUT" | grep -q "Found local migration files to be inserted before the last migration on remote database"; then
+                echo ""
+                echo "Remote is missing some older versions in history."
+                echo "Re-running db push with --include-all to apply missing DDL-only migrations."
+                echo ""
+                supabase db push --linked --password "${DB_PASSWORD}" --yes --include-all
+              else
+                exit 1
+              fi
+            fi
+
+            echo "Deploying Edge Functions..."
+            shopt -s nullglob
+            for dir in supabase/functions/*; do
+              fn="$(basename "$dir")"
+              if [[ "$fn" == "_shared" ]]; then
+                continue
+              fi
+              if [[ -d "$dir" ]]; then
+                echo "Deploying: $fn"
+                supabase functions deploy "$fn" --project-ref "${PROJECT_REF}"
+              fi
+            done
+          done < <(node - <<'NODE'
+          import fs from "node:fs";
+          const targets = JSON.parse(fs.readFileSync("targets.json", "utf8"));
+          for (const t of targets) {
+            process.stdout.write(`${t.name}\t${t.project_ref}\t${t.db_password}\n`);
+          }
+          NODE
+          )

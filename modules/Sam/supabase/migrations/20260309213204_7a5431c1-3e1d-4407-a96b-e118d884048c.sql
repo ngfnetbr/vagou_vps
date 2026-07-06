@@ -1,0 +1,1 @@
+ALTER TABLE public.school_complaints ADD COLUMN IF NOT EXISTS document_url text;

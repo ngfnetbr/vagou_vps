@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação Técnica - Sistema SAM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; color: #333; }
+        pre { background: #f4f4f4; padding: 1rem; border-radius: 5px; overflow-x: auto; }
+        code { font-family: monospace; background: #eee; padding: 0.2rem 0.4rem; border-radius: 3px; }
+        h1 { font-size: 2.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #3b82f6; padding-bottom: 0.5rem; }
+        h2 { font-size: 2rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 1rem; color: #1e40af; }
+        h3 { font-size: 1.5rem; font-weight: bold; margin-top: 1.25rem; margin-bottom: 0.75rem; color: #1e3a8a; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .mermaid { margin: 1rem 0; background: #fafafa; padding: 1rem; border: 1px dashed #ccc; border-radius: 8px; }
+        @media print {
+            .no-print { display: none; }
+            body { font-size: 12pt; }
+            h1, h2, h3 { page-break-after: avoid; }
+            .page-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto bg-white p-8 my-8 shadow-lg rounded-lg">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl text-blue-800">Sistema SAM</h1>
+            <p class="text-xl text-gray-600">Documentação Técnica Completa</p>
+            <p class="mt-4 text-sm text-gray-500">Versão 1.0.0 | Data: 11/02/2026</p>
+        </header>
+
+        <nav class="no-print bg-gray-100 p-6 rounded-lg mb-12">
+            <h2 class="text-xl mb-4 mt-0">Sumário</h2>
+            <ul class="space-y-2">
+<li><a href="#section-README.md" class="text-blue-600 hover:underline">README</a></li><li><a href="#section-arquitetura.md" class="text-blue-600 hover:underline">ARQUITETURA</a></li><li><a href="#section-requisitos.md" class="text-blue-600 hover:underline">REQUISITOS</a></li><li><a href="#section-modulos.md" class="text-blue-600 hover:underline">MODULOS</a></li><li><a href="#section-dados.md" class="text-blue-600 hover:underline">DADOS</a></li><li><a href="#section-instalacao_deploy.md" class="text-blue-600 hover:underline">INSTALACAO DEPLOY</a></li><li><a href="#section-manual_usuario.md" class="text-blue-600 hover:underline">MANUAL USUARIO</a></li><li><a href="#section-manual_admin.md" class="text-blue-600 hover:underline">MANUAL ADMIN</a></li><li><a href="#section-api_seguranca.md" class="text-blue-600 hover:underline">API SEGURANCA</a></li><li><a href="#section-troubleshooting.md" class="text-blue-600 hover:underline">TROUBLESHOOTING</a></li><li><a href="#section-glossario.md" class="text-blue-600 hover:underline">GLOSSARIO</a></li>
+            </ul>
+        </nav>
+        <main>
+<section id="section-README.md" class="page-break mb-16"><h1 id="Documentação Técnica - Sistema SAM">Documentação Técnica - Sistema SAM</h1>
+
+<h2 id="Índice">Índice</h2>
+1. <a href="arquitetura.md" class="text-blue-600 hover:underline">Visão Geral e Arquitetura</a>
+2. <a href="requisitos.md" class="text-blue-600 hover:underline">Especificação de Requisitos</a>
+3. <a href="modulos.md" class="text-blue-600 hover:underline">Módulos e Interfaces</a>
+4. <a href="dados.md" class="text-blue-600 hover:underline">Modelo de Dados e Dicionário</a>
+5. <a href="instalacao_deploy.md" class="text-blue-600 hover:underline">Instalação, Configuração e Deploy</a>
+6. <a href="manual_usuario.md" class="text-blue-600 hover:underline">Manual do Usuário</a>
+7. <a href="manual_admin.md" class="text-blue-600 hover:underline">Manual de Administração e Manutenção</a>
+8. <a href="api_seguranca.md" class="text-blue-600 hover:underline">API, Segurança e Plano de Testes</a>
+9. <a href="troubleshooting.md" class="text-blue-600 hover:underline">Troubleshooting e Histórico</a>
+10. <a href="glossario.md" class="text-blue-600 hover:underline">Glossário</a>
+
+<h2 id="Introdução">Introdução</h2>
+O SAM (Sistema de Atendimento e Monitoramento) é uma plataforma web desenvolvida para gerenciar o fluxo de atendimentos de alunos em instituições de ensino e clínicas multidisciplinares. O sistema integra gestão de alunos, agenda de profissionais, prontuários eletrônicos e auditoria de ações, garantindo conformidade e eficiência no acompanhamento pedagógico e clínico.
+
+<h2 id="Tecnologias Utilizadas">Tecnologias Utilizadas</h2>
+<ul><li><strong>Frontend</strong>: Next.js 16 (App Router), React 19, Tailwind CSS.</li></ul>
+<ul><li><strong>UI/UX</strong>: Radix UI, Lucide React, Recharts.</li></ul>
+<ul><li><strong>Backend-as-a-Service</strong>: Supabase (PostgreSQL, Auth, RLS).</li></ul>
+<ul><li><strong>Linguagem</strong>: TypeScript.</li></ul>
+<ul><li><strong>Comunicação</strong>: SMTP (Nodemailer), Webhooks.</li></ul>
+
+---
+<em>Esta documentação segue os padrões da ISO/IEC 26514.</em>
+</section><section id="section-arquitetura.md" class="page-break mb-16"><h1 id="1. Arquitetura do Sistema">1. Arquitetura do Sistema</h1><br><h2 id="1.1 Arquitetura Geral">1.1 Arquitetura Geral</h2>
+O sistema SAM utiliza uma arquitetura de aplicação web moderna baseada no padrão <strong>Serverless Client-Side Rendering (CSR)<em>* com suporte a **Server-Side Rendering (SSR)** via Next.js, comunicando-se diretamente com um *</em>Backend-as-a-Service (BaaS)</strong> (Supabase).<br><h3 id="Diagrama de Implantação">Diagrama de Implantação</h3>
+<div class="mermaid"><p class="text-xs font-bold text-gray-400 mb-2">DIAGRAMA MERMAID</p><pre>
+graph TD
+    User((Usuário/Navegador))
+    CDN[Vercel Edge Network / CDN]
+    App[Next.js App Router]
+    Supabase[Supabase BaaS]
+    DB[(PostgreSQL)]
+    Auth[Supabase Auth]
+    Storage[Supabase Storage]
+    ExternalSys[Sistemas Externos]<br>    User <--> CDN
+    CDN <--> App
+    App <--> Supabase
+    Supabase <--> DB
+    Supabase <--> Auth
+    Supabase <--> Storage
+    App -- Webhooks --> ExternalSys
+</pre></div><br><h2 id="1.2 Arquitetura de Componentes">1.2 Arquitetura de Componentes</h2>
+A aplicação está organizada em:
+<ul><li><strong>Camada de Visão (Pages/Components)</strong>: Utiliza React e Tailwind CSS.</li></ul>
+<ul><li><strong>Camada de Lógica de Negócio (Actions)</strong>: Server Actions do Next.js para mutações de dados.</li></ul>
+<ul><li><strong>Camada de Dados (Supabase Client)</strong>: Abstração para chamadas ao banco de dados e autenticação.</li></ul>
+<ul><li><strong>Segurança (RLS)</strong>: Regras de segurança aplicadas diretamente no banco de dados (Row Level Security).</li></ul><br><h2 id="1.3 Diagramas UML">1.3 Diagramas UML</h2><br><h3 id="1.3.1 Diagrama de Caso de Uso">1.3.1 Diagrama de Caso de Uso</h3>
+<div class="mermaid"><p class="text-xs font-bold text-gray-400 mb-2">DIAGRAMA MERMAID</p><pre>
+useCaseDiagram
+    actor "Administrador" as Admin
+    actor "Profissional" as Prof
+    actor "Coord. Escolar" as Coord<br>    Admin --> (Gerenciar Usuários)
+    Admin --> (Configurar Instituição)
+    Admin --> (Ver Logs de Auditoria)
+    
+    Prof --> (Gerenciar Alunos)
+    Prof --> (Realizar Atendimento)
+    Prof --> (Agendar Sessão)
+    
+    Coord --> (Consultar Alunos)
+    Coord --> (Gerenciar Turmas)
+    
+    (Gerenciar Alunos) ..> (Login) : include
+    (Realizar Atendimento) ..> (Login) : include
+</pre></div><br><h3 id="1.3.2 Diagrama de Classe (Simplificado)">1.3.2 Diagrama de Classe (Simplificado)</h3>
+<div class="mermaid"><p class="text-xs font-bold text-gray-400 mb-2">DIAGRAMA MERMAID</p><pre>
+classDiagram
+    class Profile {
+        +UUID id
+        +String full_name
+        +Enum role
+        +String specialty
+    }
+    class Student {
+        +UUID id
+        +String full_name
+        +Date birth_date
+        +Enum status
+    }
+    class Appointment {
+        +UUID id
+        +DateTime date
+        +String evolution
+        +Enum status
+    }
+    class School {
+        +UUID id
+        +String name
+    }
+    class SchoolClass {
+        +UUID id
+        +String name
+    }<br>    Profile "1" -- "*" Appointment : realiza
+    Student "1" -- "*" Appointment : recebe
+    School "1" -- "*" Student : pertence
+    School "1" -- "*" SchoolClass : possui
+    Profile "*" -- "0..1" School : coordena
+</pre></div><br><h3 id="1.3.3 Diagrama de Sequência (Fluxo de Atendimento)">1.3.3 Diagrama de Sequência (Fluxo de Atendimento)</h3>
+<div class="mermaid"><p class="text-xs font-bold text-gray-400 mb-2">DIAGRAMA MERMAID</p><pre>
+sequenceDiagram
+    participant P as Profissional
+    participant A as App (Next.js)
+    participant S as Supabase (DB)
+    participant W as Webhook Service<br>    P->>A: Seleciona Aluno e inicia Atendimento
+    A->>S: Busca histórico do aluno
+    S-->>A: Retorna dados
+    P->>A: Preenche evolução e salva
+    A->>S: Insert na tabela 'appointments'
+    S-->>A: Sucesso
+    A->>W: Dispara Webhook (se configurado)
+    W-->>A: Confirmação
+    A-->>P: Exibe mensagem de sucesso
+</pre></div>
+</section><section id="section-requisitos.md" class="page-break mb-16"><h1 id="2. Especificação de Requisitos">2. Especificação de Requisitos</h1><br><h2 id="2.1 Requisitos Funcionais (RF)">2.1 Requisitos Funcionais (RF)</h2><br><tr><td>ID</td><td>Descrição</td><td>Prioridade</td></tr>
+
+<tr><td>RF01</td><td>O sistema deve permitir o login de usuários com diferentes papéis (Admin, Profissional, Coord. Escolar).</td><td>Alta</td></tr>
+<tr><td>RF02</td><td>O sistema deve permitir o cadastro e edição de alunos, incluindo dados pessoais e escolares.</td><td>Alta</td></tr>
+<tr><td>RF03</td><td>O sistema deve permitir o agendamento de atendimentos para os alunos.</td><td>Alta</td></tr>
+<tr><td>RF04</td><td>O sistema deve permitir o registro da evolução do atendimento (prontuário eletrônico).</td><td>Alta</td></tr>
+<tr><td>RF05</td><td>O sistema deve permitir a gestão de escolas e turmas.</td><td>Média</td></tr>
+<tr><td>RF06</td><td>O sistema deve manter um log de auditoria de todas as ações críticas realizadas pelos usuários.</td><td>Alta</td></tr>
+<tr><td>RF07</td><td>O sistema deve disparar webhooks para sistemas externos em eventos de agendamento.</td><td>Média</td></tr>
+<tr><td>RF08</td><td>O sistema deve permitir a emissão de relatórios de atendimentos.</td><td>Média</td></tr>
+<tr><td>RF09</td><td>O sistema deve permitir a configuração de servidores SMTP para envio de e-mails.</td><td>Baixa</td></tr>
+<tr><td>RF10</td><td>O sistema deve permitir o controle de permissões granulares via JSONB no perfil do usuário.</td><td>Média</td><td><br><h2 id="2.2 Requisitos Não-Funcionais (RNF)">2.2 Requisitos Não-Funcionais (RNF)</h2><br></td><td>ID</td><td>Descrição</td><td>Categoria</td></tr>
+
+<tr><td>RNF01</td><td>O sistema deve ser responsivo, funcionando em desktops, tablets e smartphones.</td><td>Usabilidade</td></tr>
+<tr><td>RNF02</td><td>O sistema deve garantir a segurança dos dados dos alunos através de Row Level Security (RLS).</td><td>Segurança</td></tr>
+<tr><td>RNF03</td><td>O tempo de resposta das consultas principais não deve exceder 2 segundos.</td><td>Performance</td></tr>
+<tr><td>RNF04</td><td>O sistema deve ser desenvolvido em TypeScript para garantir a tipagem e manutenibilidade.</td><td>Manutenibilidade</td></tr>
+<tr><td>RNF05</td><td>A comunicação entre o frontend e o backend deve ser criptografada via HTTPS.</td><td>Segurança</td></tr>
+<tr><td>RNF06</td><td>O sistema deve seguir os padrões da LGPD para tratamento de dados sensíveis de menores.</td><td>Legal</td></tr>
+<tr><td>RNF07</td><td>O histórico de versões deve ser mantido no arquivo CHANGELOG.md.</td><td>Gestão</td></tr>
+<tr><td>RNF08</td><td>O sistema deve suportar até 100 requisições de webhook por minuto.</td><td>Escalabilidade</td></tr>
+</section><section id="section-modulos.md" class="page-break mb-16"><h1 id="3. Descrição de Módulos e Interfaces">3. Descrição de Módulos e Interfaces</h1><br><h2 id="3.1 Módulo de Autenticação (<code>/app/(auth)</code>)">3.1 Módulo de Autenticação (<code>/app/(auth)</code>)</h2>
+Responsável pelo acesso seguro ao sistema.
+<ul><li><strong>Login</strong>: Interface para entrada no sistema com e-mail e senha.</li></ul>
+<ul><li><strong>Recuperação de Senha</strong>: Fluxo para reset de senha via e-mail (SMTP).</li></ul>
+<ul><li><strong>Interface</strong>: <code>AuthForm</code>, <code>RecoveryForm</code>.</li></ul><br><h2 id="3.2 Dashboard (<code>/app/(dashboard)/dashboard</code>)">3.2 Dashboard (<code>/app/(dashboard)/dashboard</code>)</h2>
+Visão geral gerencial do sistema.
+<ul><li><strong>Gráficos</strong>: Total de atendimentos por período, alunos por status.</li></ul>
+<ul><li><strong>Cards de Estatísticas</strong>: Alunos ativos, agendamentos hoje, profissionais logados.</li></ul>
+<ul><li><strong>Tecnologias</strong>: Recharts para visualização de dados.</li></ul><br><h2 id="3.3 Gestão de Alunos (<code>/app/(dashboard)/alunos</code>)">3.3 Gestão de Alunos (<code>/app/(dashboard)/alunos</code>)</h2>
+Módulo central para gerenciamento do público-alvo.
+<ul><li><strong>Listagem</strong>: Filtros por escola, turma e status.</li></ul>
+<ul><li><strong>Prontuário</strong>: Histórico completo de atendimentos, documentos e observações.</li></ul>
+<ul><li><strong>Cadastro/Edição</strong>: Formulário detalhado com validação Zod.</li></ul><br><h2 id="3.4 Agenda e Atendimentos (<code>/app/(dashboard)/agenda</code> e <code>/atendimentos</code>)">3.4 Agenda e Atendimentos (<code>/app/(dashboard)/agenda</code> e <code>/atendimentos</code>)</h2>
+Controle temporal das atividades profissionais.
+<ul><li><strong>Agenda</strong>: Calendário de compromissos.</li></ul>
+<ul><li><strong>Novo Atendimento</strong>: Registro de evolução, plano de ação e tipo de especialidade.</li></ul>
+<ul><li><strong>Ações</strong>: Confirmar, cancelar ou remarcar sessões.</li></ul><br><h2 id="3.5 Gestão de Escolas e Turmas (<code>/app/(dashboard)/escolas</code>)">3.5 Gestão de Escolas e Turmas (<code>/app/(dashboard)/escolas</code>)</h2>
+Estruturação das unidades de ensino.
+<ul><li><strong>Escolas</strong>: Cadastro de unidades e endereços.</li></ul>
+<ul><li><strong>Turmas</strong>: Criação de classes vinculadas às escolas.</li></ul><br><h2 id="3.6 Administração e Configurações (<code>/app/(dashboard)/usuarios</code> e <code>/configuracoes</code>)">3.6 Administração e Configurações (<code>/app/(dashboard)/usuarios</code> e <code>/configuracoes</code>)</h2>
+Controle do sistema e integrações.
+<ul><li><strong>Usuários</strong>: Gestão de perfis (Admin, Profissional, Coordenador).</li></ul>
+<ul><li><strong>Configurações</strong>: Integração com Webhooks, SMTP e dados da Instituição.</li></ul>
+<ul><li><strong>Auditoria</strong>: Visualização de logs de ações do sistema.</li></ul><br><h2 id="3.7 Interfaces e Componentes Comuns (<code>/components</code>)">3.7 Interfaces e Componentes Comuns (<code>/components</code>)</h2>
+<ul><li><strong>Layout</strong>: Sidebar lateral, Header com breadcrumbs.</li></ul>
+<ul><li><strong>UI (Radix)</strong>: Botões, Inputs, Diálogos, Tabelas responsivas.</li></ul>
+<ul><li><strong>Common</strong>: Botão de impressão, exportação de dados.</li></ul>
+</section><section id="section-dados.md" class="page-break mb-16"><h1 id="4. Modelo de Dados e Dicionário">4. Modelo de Dados e Dicionário</h1><br><h2 id="4.1 Modelo Entidade-Relacionamento (Conceitual)">4.1 Modelo Entidade-Relacionamento (Conceitual)</h2>
+O banco de dados é hospedado no PostgreSQL (Supabase) e segue uma estrutura relacional normalizada.<br><h3 id="Tabelas Principais">Tabelas Principais</h3>
+<ul><li><code>profiles</code>: Extensão da tabela de usuários do Supabase Auth.</li></ul>
+<ul><li><code>schools</code>: Cadastro de instituições de ensino.</li></ul>
+<ul><li><code>school_classes</code>: Turmas vinculadas às escolas.</li></ul>
+<ul><li><code>students</code>: Dados dos alunos.</li></ul>
+<ul><li><code>appointments</code>: Registro de sessões e agendamentos.</li></ul>
+<ul><li><code>audit_logs</code>: Rastro de auditoria.</li></ul>
+<ul><li><code>webhook_configs</code> e <code>webhook_logs</code>: Gestão de integrações.</li></ul><br><h2 id="4.2 Dicionário de Dados">4.2 Dicionário de Dados</h2><br><h3 id="Tabela: <code>profiles</code>">Tabela: <code>profiles</code></h3>
+<tr><td>Coluna</td><td>Tipo</td><td>Descrição</td></tr>
+
+<tr><td><code>id</code></td><td>UUID</td><td>Chave primária (referência a <code>auth.users</code>).</td></tr>
+<tr><td><code>full_name</code></td><td>TEXT</td><td>Nome completo do usuário.</td></tr>
+<tr><td><code>role</code></td><td>ENUM</td><td>Papel: 'admin', 'professional', 'school_coord'.</td></tr>
+<tr><td><code>specialty</code></td><td>TEXT</td><td>Especialidade (ex: 'Fonoaudiologia').</td></tr>
+<tr><td><code>school_id</code></td><td>UUID</td><td>FK para <code>schools</code> (usado por coordenadores).</td></tr>
+<tr><td><code>permissions</code></td><td>JSONB</td><td>Permissões granulares de acesso.</td></tr><br><h3 id="Tabela: <code>students</code>">Tabela: <code>students</code></h3>
+<tr><td>Coluna</td><td>Tipo</td><td>Descrição</td></tr>
+
+<tr><td><code>id</code></td><td>UUID</td><td>Chave primária.</td></tr>
+<tr><td><code>full_name</code></td><td>TEXT</td><td>Nome completo do aluno.</td></tr>
+<tr><td><code>birth_date</code></td><td>DATE</td><td>Data de nascimento.</td></tr>
+<tr><td><code>school_id</code></td><td>UUID</td><td>FK para <code>schools</code>.</td></tr>
+<tr><td><code>class_name</code></td><td>TEXT</td><td>Nome da turma/série.</td></tr>
+<tr><td><code>status</code></td><td>ENUM</td><td>'active', 'waiting', 'finished'.</td></tr><br><h3 id="Tabela: <code>appointments</code>">Tabela: <code>appointments</code></h3>
+<tr><td>Coluna</td><td>Tipo</td><td>Descrição</td></tr>
+
+<tr><td><code>id</code></td><td>UUID</td><td>Chave primária.</td></tr>
+<tr><td><code>student_id</code></td><td>UUID</td><td>FK para <code>students</code>.</td></tr>
+<tr><td><code>professional_id</code></td><td>UUID</td><td>FK para <code>profiles</code>.</td></tr>
+<tr><td><code>date</code></td><td>TZ</td><td>Data e hora do atendimento.</td></tr>
+<tr><td><code>evolution</code></td><td>TEXT</td><td>Texto descritivo da evolução clínica.</td></tr>
+<tr><td><code>status</code></td><td>ENUM</td><td>'scheduled', 'completed', 'missed', 'cancelled'.</td></tr><br><h2 id="4.3 Fluxo de Informação">4.3 Fluxo de Informação</h2>
+1. <strong>Entrada</strong>: Dados inseridos via formulários Next.js validando com Zod.
+2. <strong>Processamento</strong>: Server Actions tratam a lógica e chamam o Supabase SDK.
+3. <strong>Persistência</strong>: PostgreSQL armazena com RLS garantindo que apenas usuários autorizados acessem as linhas.
+4. <strong>Saída</strong>: Webhooks disparam payloads JSON para sistemas externos.
+</section><section id="section-instalacao_deploy.md" class="page-break mb-16"><h1 id="5. Instalação, Configuração e Deploy">5. Instalação, Configuração e Deploy</h1><br><h2 id="5.1 Requisitos de Sistema">5.1 Requisitos de Sistema</h2>
+<ul><li><strong>Node.js</strong>: v20 ou superior.</li></ul>
+<ul><li><strong>Gerenciador de Pacotes</strong>: npm ou yarn.</li></ul>
+<ul><li><strong>Banco de Dados</strong>: Instância Supabase (PostgreSQL).</li></ul><br><h2 id="5.2 Guia de Instalação Local (Desenvolvimento)">5.2 Guia de Instalação Local (Desenvolvimento)</h2>
+1. Clone o repositório.
+2. Navegue até a pasta <code>sam-system</code>.
+3. Execute o script de instalação ou use npm:
+   <pre><code>bash
+   npm install
+   </code></pre>
+4. Configure as variáveis de ambiente no arquivo <code>.env.local</code>:
+   <pre><code>env
+   NEXT_PUBLIC_SUPABASE_URL=sua_url_supabase
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave_anonima
+   SUPABASE_SERVICE_ROLE_KEY=sua_chave_service_role
+   </code></pre>
+5. Execute o servidor de desenvolvimento:
+   <pre><code>bash
+   npm run dev
+   </code></pre><br><h2 id="5.3 Configuração do Banco de Dados (Supabase)">5.3 Configuração do Banco de Dados (Supabase)</h2>
+1. Crie um novo projeto no Supabase.
+2. Execute o conteúdo de <code>supabase/schema.sql</code> no Editor SQL.
+3. Execute as migrations contidas em <code>supabase/migrations/</code> em ordem cronológica.
+4. Habilite o Auth (E-mail/Senha).<br><h2 id="5.4 Guia de Deploy">5.4 Guia de Deploy</h2><br><h3 id="Ambiente de Desenvolvimento (Dev)">Ambiente de Desenvolvimento (Dev)</h3>
+<ul><li>Host: Vercel ou local.</li></ul>
+<ul><li>Branch: <code>develop</code>.</li></ul>
+<ul><li>Variáveis: Apontando para o projeto Supabase de testes.</li></ul><br><h3 id="Ambiente de Homologação (Hom)">Ambiente de Homologação (Hom)</h3>
+<ul><li>Host: Vercel (Preview Deployments).</li></ul>
+<ul><li>Branch: <code>staging</code>.</li></ul>
+<ul><li>Objetivo: Validação de PO e usuários chave.</li></ul><br><h3 id="Ambiente de Produção (Prod)">Ambiente de Produção (Prod)</h3>
+<ul><li>Host: Vercel.</li></ul>
+<ul><li>Branch: <code>main</code>.</li></ul>
+<ul><li>Requisito: SSL ativo, Backup diário do banco, Variáveis de ambiente de produção.</li></ul><br><h2 id="5.5 Scripts Úteis">5.5 Scripts Úteis</h2>
+<ul><li><code>npm run build</code>: Gera a build de produção.</li></ul>
+<ul><li><code>npm run lint</code>: Verifica erros de estilo e código.</li></ul>
+<ul><li><code>start_server.bat</code>: Script Windows para iniciar o servidor localmente.</li></ul>
+<ul><li><code>install.bat</code>: Script Windows para automação da instalação inicial.</li></ul>
+</section><section id="section-manual_usuario.md" class="page-break mb-16"><h1 id="6. Manual do Usuário">6. Manual do Usuário</h1><br><h2 id="6.1 Introdução">6.1 Introdução</h2>
+Este manual descreve as principais funcionalidades do SAM para profissionais e coordenadores.<br><h2 id="6.2 Primeiro Acesso">6.2 Primeiro Acesso</h2>
+1. Acesse a URL do sistema.
+2. Insira seu e-mail e senha fornecidos pelo administrador.
+3. Caso tenha esquecido a senha, utilize o link "Esqueci minha senha".<br><h2 id="6.3 Gestão de Alunos">6.3 Gestão de Alunos</h2>
+<h3 id="Cadastrar Novo Aluno">Cadastrar Novo Aluno</h3>
+1. Clique em <strong>Alunos</strong> no menu lateral.
+2. Clique no botão <strong>Novo Aluno</strong>.
+3. Preencha o nome completo, data de nascimento e selecione a escola/turma.
+4. Clique em <strong>Salvar</strong>.
+<em>(Inserir screenshot da tela de cadastro de alunos aqui)</em><br><h3 id="Consultar Prontuário">Consultar Prontuário</h3>
+1. Na lista de alunos, clique no nome do aluno desejado.
+2. A aba <strong>Prontuário</strong> exibirá todo o histórico de evoluções em ordem cronológica.
+<em>(Inserir screenshot do prontuário do aluno aqui)</em><br><h2 id="6.4 Realizando Atendimentos">6.4 Realizando Atendimentos</h2>
+<h3 id="Agendar Sessão">Agendar Sessão</h3>
+1. Vá em <strong>Agenda</strong>.
+2. Clique no dia/horário desejado ou no botão <strong>Novo Agendamento</strong>.
+3. Selecione o aluno e o tipo de atendimento.
+4. Salve o agendamento.<br><h3 id="Registrar Evolução">Registrar Evolução</h3>
+1. Durante ou após o atendimento, localize o agendamento na agenda ou lista.
+2. Clique em <strong>Realizar Atendimento</strong>.
+3. No campo <strong>Evolução</strong>, descreva o progresso do aluno.
+4. Clique em <strong>Finalizar</strong>.
+<em>(Inserir screenshot do formulário de atendimento aqui)</em><br><h2 id="6.5 Relatórios">6.5 Relatórios</h2>
+1. Acesse o módulo <strong>Relatórios</strong>.
+2. Selecione os filtros desejados (Data, Profissional, Escola).
+3. Visualize os dados na tela ou utilize o botão <strong>Imprimir/Exportar</strong>.
+</section><section id="section-manual_admin.md" class="page-break mb-16"><h1 id="7. Manual de Administração e Manutenção">7. Manual de Administração e Manutenção</h1><br><h2 id="7.1 Gestão de Usuários">7.1 Gestão de Usuários</h2>
+Somente administradores podem criar novos usuários e definir seus papéis.
+1. Vá em <strong>Usuários</strong>.
+2. Clique em <strong>Novo Usuário</strong>.
+3. Defina o e-mail e o papel (Admin, Profissional ou Coordenador).
+4. O usuário receberá um convite por e-mail (se SMTP configurado) ou deverá realizar o primeiro acesso.<br><h2 id="7.2 Auditoria do Sistema">7.2 Auditoria do Sistema</h2>
+O módulo de <strong>Auditoria</strong> permite rastrear:
+<ul><li>Quem alterou dados de alunos.</li></ul>
+<ul><li>Datas e horários de login.</li></ul>
+<ul><li>Exclusões de registros (soft delete ou hard delete).</li></ul>
+Utilize os filtros de "Recurso" e "Usuário" para investigações.<br><h2 id="7.3 Manutenção e Backups">7.3 Manutenção e Backups</h2>
+<ul><li><strong>Banco de Dados</strong>: O Supabase realiza backups automáticos diários. Em caso de necessidade de restauração, utilize o painel do Supabase.</li></ul>
+<ul><li><strong>Atualização de Código</strong>: Siga o fluxo de Git (Pull Request -> Merge -> Deploy).</li></ul>
+<ul><li><strong>Logs de Erro</strong>: Verifique o console da Vercel ou os logs do Supabase para erros de API.</li></ul><br><h2 id="7.4 Configuração de Webhooks">7.4 Configuração de Webhooks</h2>
+1. Vá em <strong>Configurações<em>* -> *</em>Integrações</strong>.
+2. Adicione a URL do sistema externo.
+3. Gere ou defina um <code>Secret</code> para assinatura das requisições.
+4. Selecione os eventos que deseja enviar (ex: <code>appointment.confirmed</code>).
+5. Monitore as entregas na tabela de logs de webhook.
+</section><section id="section-api_seguranca.md" class="page-break mb-16"><h1 id="8. API, Segurança e Plano de Testes">8. API, Segurança e Plano de Testes</h1><br><h2 id="8.1 Segurança e Controle de Acesso">8.1 Segurança e Controle de Acesso</h2>
+O SAM utiliza uma estratégia de segurança em múltiplas camadas.<br><h3 id="Autenticação">Autenticação</h3>
+<ul><li>Gerenciada pelo Supabase Auth (JWT).</li></ul>
+<ul><li>Sessões persistentes e seguras via Cookies.</li></ul><br><h3 id="Autorização (RLS - Row Level Security)">Autorização (RLS - Row Level Security)</h3>
+Exemplo de política para a tabela <code>students</code>:
+<pre><code>sql
+CREATE POLICY "Professionals and Admins can update students"
+  ON students FOR UPDATE
+  TO authenticated
+  USING ( 
+    EXISTS (
+      SELECT 1 FROM profiles
+      WHERE profiles.id = auth.uid()
+      AND profiles.role IN ('admin', 'professional')
+    )
+  );
+</code></pre><br><h2 id="8.2 API e Integrações">8.2 API e Integrações</h2>
+O sistema expõe rotas de API internas via Next.js Route Handlers e permite consumo direto do banco via Supabase Client (respeitando RLS).<br><h3 id="Exemplo de Chamada de API (Webhooks)">Exemplo de Chamada de API (Webhooks)</h3>
+O payload enviado pelo sistema segue o formato:
+<pre><code>json
+{
+  "event": "appointment.confirmed",
+  "timestamp": "2024-02-10T14:30:00Z",
+  "data": {
+    "appointment_id": "uuid",
+    "student_name": "João Silva",
+    "date": "2024-02-15T09:00:00Z"
+  }
+}
+</code></pre><br><h2 id="8.3 Plano de Testes">8.3 Plano de Testes</h2>
+O plano de testes foca em garantir a integridade dos dados e a disponibilidade das funcionalidades críticas.<br><h3 id="Casos de Teste (Exemplos)">Casos de Teste (Exemplos)</h3>
+<tr><td>ID</td><td>Descrição</td><td>Resultado Esperado</td></tr>
+
+<tr><td>CT01</td><td>Login com credenciais válidas.</td><td>Acesso concedido ao Dashboard.</td></tr>
+<tr><td>CT02</td><td>Tentativa de acesso de Coordenador a logs de Admin.</td><td>Acesso negado (403/RLS).</td></tr>
+<tr><td>CT03</td><td>Criação de agendamento em horário conflitante.</td><td>Sistema deve alertar ou impedir.</td></tr>
+<tr><td>CT04</td><td>Registro de evolução em aluno inativo.</td><td>Permitir, mas alertar status.</td></tr>
+<tr><td>CT05</td><td>Disparo de webhook após confirmação.</td><td>Endpoint externo recebe payload 200 OK.</td></tr><br><h3 id="Ferramentas de Teste">Ferramentas de Teste</h3>
+<ul><li><strong>Unitários</strong>: Jest/Vitest.</li></ul>
+<ul><li><strong>E2E</strong>: Playwright ou Cypress.</li></ul>
+<ul><li><strong>Manual</strong>: Script de teste SMTP (<code>tests/smtp-test-script.ts</code>).</li></ul>
+</section><section id="section-troubleshooting.md" class="page-break mb-16"><h1 id="9. Troubleshooting e Histórico">9. Troubleshooting e Histórico</h1><br><h2 id="9.1 FAQ - Perguntas Frequentes">9.1 FAQ - Perguntas Frequentes</h2><br><strong>P: O usuário não consegue fazer login.</strong>
+R: Verifique se o e-mail está correto no Supabase Auth e se o perfil na tabela <code>profiles</code> existe com o mesmo ID.<br><strong>P: O webhook está retornando erro.</strong>
+R: Verifique a tabela <code>webhook_logs</code> para ver o código de status retornado pelo servidor externo. Comumente é um erro de timeout (30s) ou falta de token de autorização.<br><strong>P: Os dados do aluno não aparecem para o Coordenador.</strong>
+R: Verifique se o <code>school_id</code> do perfil do coordenador corresponde ao <code>school_id</code> do aluno.<br><h2 id="9.2 Erros Comuns e Soluções">9.2 Erros Comuns e Soluções</h2><br><tr><td>Erro</td><td>Causa Provável</td><td>Solução</td></tr>
+
+<tr><td><code>PGRST116</code></td><td>Falha na política de RLS.</td><td>Verifique as permissões do usuário no banco.</td></tr>
+<tr><td><code>500 Internal Server Error</code></td><td>Falha em Server Action.</td><td>Verifique as chaves de ambiente (Environment Variables).</td></tr>
+<tr><td><code>SMTP Connection Timeout</code></td><td>Porta bloqueada ou host incorreto.</td><td>Teste com o script <code>tests/smtp-test-script.ts</code>.</td></tr><br><h2 id="9.3 Histórico de Versões (Changelog)">9.3 Histórico de Versões (Changelog)</h2><br><h3 id="v0.1.0 (2024-02-21)">v0.1.0 (2024-02-21)</h3>
+<ul><li>Lançamento inicial do sistema SAM.</li></ul>
+<ul><li>Módulos de Alunos, Escolas e Agenda.</li></ul>
+<ul><li>Implementação de RLS e Auditoria.</li></ul>
+<ul><li>Sistema de Webhooks para integrações.</li></ul><br><h3 id="v0.1.1 (2024-06-01)">v0.1.1 (2024-06-01)</h3>
+<ul><li>Adição de configurações de Instituição.</li></ul>
+<ul><li>Melhorias na interface de relatórios.</li></ul>
+<ul><li>Correção de bugs no fluxo de recuperação de senha.</li></ul><br>---
+<em>Consulte o arquivo CHANGELOG.md na raiz para detalhes técnicos de commits.</em>
+</section><section id="section-glossario.md" class="page-break mb-16"><h1 id="10. Glossário e Referências">10. Glossário e Referências</h1><br><h2 id="10.1 Glossário">10.1 Glossário</h2><br><ul><li><strong>BaaS (Backend as a Service)</strong>: Modelo de serviço onde o backend é fornecido por terceiros (Supabase).</li></ul>
+<ul><li><strong>RLS (Row Level Security)</strong>: Recurso do PostgreSQL que permite restringir o acesso a linhas específicas de uma tabela com base no usuário logado.</li></ul>
+<ul><li><strong>Webhook</strong>: Forma de recebimento de informações em tempo real por meio de requisições HTTP POST.</li></ul>
+<ul><li><strong>JWT (JSON Web Token)</strong>: Padrão para criação de tokens de acesso seguros.</li></ul>
+<ul><li><strong>Zod</strong>: Biblioteca de declaração e validação de esquemas TypeScript.</li></ul>
+<ul><li><strong>Prontuário</strong>: Conjunto de documentos que registram o histórico de atendimentos do aluno.</li></ul><br><h2 id="10.2 Referências e Padrões">10.2 Referências e Padrões</h2>
+<ul><li><strong>ISO/IEC 26514</strong>: Padrão internacional para design e desenvolvimento de documentação de usuário para software.</li></ul>
+<ul><li><strong>Next.js Documentation</strong>: <a href="https://nextjs.org/docs" class="text-blue-600 hover:underline">https://nextjs.org/docs</a></li></ul>
+<ul><li><strong>Supabase Documentation</strong>: <a href="https://supabase.com/docs" class="text-blue-600 hover:underline">https://supabase.com/docs</a></li></ul>
+<ul><li><strong>Tailwind CSS</strong>: <a href="https://tailwindcss.com" class="text-blue-600 hover:underline">https://tailwindcss.com</a></li></ul>
+<ul><li><strong>Radix UI</strong>: <a href="https://www.radix-ui.com" class="text-blue-600 hover:underline">https://www.radix-ui.com</a></li></ul>
+</section>
+        </main>
+        <footer class="mt-12 pt-8 border-t text-center text-gray-500 text-sm">
+            <p>© 2026 Sistema SAM - Documentação Técnica gerada automaticamente.</p>
+        </footer>
+    </div>
+</body>
+</html>
