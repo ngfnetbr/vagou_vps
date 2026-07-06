@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import appStoreBadge from "@/assets/app-store-badge.svg";
+import googlePlayBadge from "@/assets/google-play-badge.svg";
 import { Spinner } from "@/components/common/Spinner";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -251,18 +253,12 @@ const DownloadApp = () => {
             <div className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
               {/* App Store */}
               <div className="group relative flex flex-col items-center gap-3">
-                <div
+                <img
+                  src={appStoreBadge}
+                  alt="Download on the App Store"
+                  className="pointer-events-none h-14 w-auto opacity-60 grayscale"
                   aria-disabled
-                  className="pointer-events-none flex w-full items-center justify-center gap-3 rounded-2xl bg-black px-5 py-4 text-white opacity-70 grayscale"
-                >
-                  <svg viewBox="0 0 384 512" className="h-9 w-9 fill-current" aria-hidden>
-                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zM256.7 87.7c22.6-26.8 20.6-51.2 20-59.7-20.1 1.2-43.4 13.7-56.6 29.1-14.6 16.6-23.2 37.1-21.3 58.3 21.8 1.7 41.6-9.7 57.9-27.7z"/>
-                  </svg>
-                  <div className="text-left leading-tight">
-                    <div className="text-[10px] uppercase tracking-wider opacity-80">Baixar na</div>
-                    <div className="text-xl font-semibold">App Store</div>
-                  </div>
-                </div>
+                />
                 <Badge variant="secondary" className="gap-1">
                   <Zap className="h-3 w-3" /> Em desenvolvimento — em breve
                 </Badge>
@@ -270,21 +266,12 @@ const DownloadApp = () => {
 
               {/* Google Play */}
               <div className="group relative flex flex-col items-center gap-3">
-                <div
+                <img
+                  src={googlePlayBadge}
+                  alt="Get it on Google Play"
+                  className="pointer-events-none h-14 w-auto opacity-60 grayscale"
                   aria-disabled
-                  className="pointer-events-none flex w-full items-center justify-center gap-3 rounded-2xl bg-black px-5 py-4 text-white opacity-70 grayscale"
-                >
-                  <svg viewBox="0 0 512 512" className="h-9 w-9" aria-hidden>
-                    <path fill="#EA4335" d="M325.3 234.3L104.7 15.1c8.4-2.2 17.9-.4 25.1 3.8l254.8 145.4-59.3 69.9z"/>
-                    <path fill="#FBBC04" d="M384.6 164.3l60.4 34.5c17.9 10.2 17.9 36.1 0 46.3l-60.4 34.5-64.6-57.6 64.6-57.7z"/>
-                    <path fill="#4285F4" d="M325.3 277.7l59.3 69.9L129.8 493c-7.2 4.1-16.7 6-25.1 3.8l220.6-219.1z"/>
-                    <path fill="#34A853" d="M104.7 15.1c-2.8.7-5.4 1.8-7.9 3.2C86.5 24.4 80 35 80 47.4v417.2c0 12.4 6.5 23 16.8 29.1 2.5 1.4 5.1 2.5 7.9 3.2L325.3 277.7 104.7 15.1z"/>
-                  </svg>
-                  <div className="text-left leading-tight">
-                    <div className="text-[10px] uppercase tracking-wider opacity-80">Disponível no</div>
-                    <div className="text-xl font-semibold">Google Play</div>
-                  </div>
-                </div>
+                />
                 <Badge variant="secondary" className="gap-1">
                   <Zap className="h-3 w-3" /> Em desenvolvimento — em breve
                 </Badge>
