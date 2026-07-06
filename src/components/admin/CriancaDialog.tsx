@@ -1368,7 +1368,7 @@ export function CriancaDialog({ open, onOpenChange, criancaId, tipoUnidadeOverri
         status: isSchoolMode ? (((data as any).sexo === "Feminino") ? "Matriculada" : "Matriculado") : undefined,
         origem_cadastro: isSchoolMode ? schoolMode!.moduloOrigem : "vagou",
         modulo_gestor: isSchoolMode ? "sam_sondar" : "vagou",
-        ignorar_automacoes_vagou: isSchoolMode ? true : undefined,
+        ignorar_automacoes_vagou: isSchoolMode ? true : false,
         ...(dadosIncompletosToSave !== undefined ? { dados_incompletos: dadosIncompletosToSave } : {}),
       };
 
