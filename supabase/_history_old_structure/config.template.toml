@@ -1,0 +1,50 @@
+# =============================================================================
+# VAGOU - Template de Configuração Supabase
+# =============================================================================
+# 
+# Este é um template para o arquivo config.toml.
+# Para usar em um novo projeto, copie este arquivo para supabase/config.toml
+# e substitua {{PROJECT_ID}} pelo ID do seu projeto Supabase.
+#
+# =============================================================================
+
+project_id = "{{PROJECT_ID}}"
+
+[functions.enviar-contato]
+verify_jwt = false
+
+[functions.enviar-notificacao]
+verify_jwt = false
+
+[functions.gerar-ficha-pdf]
+verify_jwt = true
+
+[functions.gerar-dados-ficticios]
+verify_jwt = true
+
+[functions.limpar-dados]
+verify_jwt = true
+
+[functions.gerar-comprovante]
+verify_jwt = true
+
+[functions.verificar-prazos]
+verify_jwt = false
+
+[functions.manifest-pwa]
+verify_jwt = false
+
+[functions.validar-documento]
+verify_jwt = false
+
+[functions.admin-usuarios]
+verify_jwt = false
+
+[functions.validar-captcha]
+verify_jwt = false
+
+[functions.recalcular-fila]
+verify_jwt = false
+
+[functions.registrar-auditoria]
+verify_jwt = false

@@ -1,0 +1,156 @@
+:root {
+  /* Gov.br institutional palette — refined for a more vivid, modern feel */
+  --govbr-blue-main: 214 88% 41%;
+  --govbr-blue-dark: 217 60% 16%;
+  --govbr-blue-light: 214 100% 96%;
+  --govbr-green: 152 64% 40%;
+  --govbr-yellow: 43 96% 56%;
+  --govbr-gray-1: 210 30% 98%;
+  --govbr-gray-2: 214 22% 90%;
+  --govbr-gray-3: 214 14% 66%;
+  --govbr-gray-4: 215 18% 34%;
+
+  --background: 210 40% 99%;
+  --foreground: var(--govbr-blue-dark);
+
+  --card: 0 0% 100%;
+  --card-foreground: var(--govbr-blue-dark);
+
+  --popover: 0 0% 100%;
+  --popover-foreground: var(--govbr-blue-dark);
+
+  --primary: var(--govbr-blue-main);
+  --primary-foreground: 0 0% 100%;
+  --primary-glow: 210 95% 56%;
+
+  --secondary: var(--govbr-gray-1);
+  --secondary-foreground: var(--govbr-blue-dark);
+
+  --muted: var(--govbr-gray-1);
+  --muted-foreground: var(--govbr-gray-4);
+
+  --accent: var(--govbr-green);
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 78% 56%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: var(--govbr-gray-2);
+  --input: var(--govbr-gray-2);
+  --ring: var(--govbr-blue-main);
+
+  --radius: 0.625rem;
+
+  --header-bg: var(--govbr-blue-main);
+  --header-fg: 0 0% 100%;
+  --success: var(--govbr-green);
+  --warning: var(--govbr-yellow);
+  --info: 199 89% 48%;
+
+  /* WhatsApp brand (uso restrito a prévias/integrações de WhatsApp) */
+  --whatsapp: 142 71% 49%;
+  --whatsapp-bubble: 94 70% 87%;
+  --whatsapp-bg: 30 25% 87%;
+
+  --chart-success: 152 64% 40%;
+  --chart-warning: 43 96% 52%;
+  --chart-info: 199 89% 48%;
+  --chart-purple: 265 75% 58%;
+  --chart-muted: 214 14% 66%;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+  --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(152 70% 50%));
+  --gradient-subtle: linear-gradient(180deg, hsl(var(--card)), hsl(var(--secondary)));
+
+  /* Elevation system */
+  --shadow-xs: 0 1px 2px -1px hsl(217 50% 20% / 0.08);
+  --shadow-sm: 0 1px 3px -1px hsl(217 50% 20% / 0.10), 0 1px 2px -2px hsl(217 50% 20% / 0.06);
+  --shadow-md: 0 6px 16px -8px hsl(217 50% 20% / 0.16), 0 2px 6px -4px hsl(217 50% 20% / 0.10);
+  --shadow-lg: 0 18px 40px -16px hsl(217 50% 20% / 0.22), 0 6px 14px -8px hsl(217 50% 20% / 0.12);
+  --shadow-glow: 0 0 0 1px hsl(var(--primary) / 0.10), 0 12px 32px -12px hsl(var(--primary) / 0.40);
+
+  --sidebar-background: 216 72% 33%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 216 72% 33%;
+  --sidebar-accent: 214 78% 44%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 214 60% 46%;
+  --sidebar-ring: 0 0% 100%;
+}
+
+.dark {
+  /* Neutral black & gray dark mode — no blue */
+  --govbr-blue-main: 0 0% 90%;
+  --govbr-blue-dark: 0 0% 95%;
+  --govbr-blue-light: 0 0% 18%;
+  --govbr-green: 152 62% 50%;
+  --govbr-yellow: 43 94% 62%;
+  --govbr-gray-1: 0 0% 12%;
+  --govbr-gray-2: 0 0% 22%;
+  --govbr-gray-3: 0 0% 58%;
+  --govbr-gray-4: 0 0% 82%;
+
+  /* Neutral layered dark surfaces */
+  --background: 0 0% 7%;
+  --foreground: 0 0% 95%;
+
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 95%;
+
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 95%;
+
+  --primary: 0 0% 22%;
+  --primary-foreground: 0 0% 98%;
+  --primary-glow: 0 0% 32%;
+
+  --secondary: 0 0% 16%;
+  --secondary-foreground: 0 0% 95%;
+
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 65%;
+
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 95%;
+
+  --destructive: 0 72% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 22%;
+  --input: 0 0% 19%;
+  --ring: 0 0% 60%;
+
+  --header-bg: 0 0% 9%;
+  --header-fg: 0 0% 95%;
+
+  --success: 152 60% 48%;
+  --warning: 43 94% 60%;
+  --info: 0 0% 70%;
+
+  --chart-success: 152 60% 48%;
+  --chart-warning: 43 94% 58%;
+  --chart-info: 0 0% 70%;
+  --chart-purple: 265 80% 72%;
+  --chart-muted: 0 0% 50%;
+
+  --gradient-primary: linear-gradient(135deg, hsl(0 0% 25%), hsl(0 0% 15%));
+  --gradient-accent: linear-gradient(135deg, hsl(0 0% 22%), hsl(0 0% 14%));
+  --gradient-subtle: linear-gradient(180deg, hsl(var(--card)), hsl(var(--secondary)));
+
+  --shadow-xs: 0 1px 2px -1px hsl(0 0% 0% / 0.40);
+  --shadow-sm: 0 1px 3px -1px hsl(0 0% 0% / 0.45), 0 1px 2px -2px hsl(0 0% 0% / 0.35);
+  --shadow-md: 0 6px 16px -8px hsl(0 0% 0% / 0.55), 0 2px 6px -4px hsl(0 0% 0% / 0.40);
+  --shadow-lg: 0 18px 40px -16px hsl(0 0% 0% / 0.65), 0 6px 14px -8px hsl(0 0% 0% / 0.45);
+  --shadow-glow: 0 0 0 1px hsl(0 0% 100% / 0.10), 0 12px 32px -12px hsl(0 0% 0% / 0.60);
+
+  --sidebar-background: 0 0% 8%;
+  --sidebar-foreground: 0 0% 95%;
+  --sidebar-primary: 0 0% 22%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 0 0% 15%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --sidebar-border: 0 0% 18%;
+  --sidebar-ring: 0 0% 60%;
+}

@@ -1,0 +1,202 @@
+# Codemagic CI/CD Configuration
+# Documentação: https://docs.codemagic.io/yaml/yaml-getting-started/
+
+workflows:
+  # ============================================
+  # Build Android APK
+  # ============================================
+  android-build:
+    name: Android Build
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    
+    environment:
+      node: 20
+      java: 17
+      
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+    
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+        
+      - name: Build web app
+        script: npm run build
+        
+      - name: Add Android platform
+        script: npx cap add android || true
+        
+      - name: Sync Capacitor
+        script: npx cap sync android
+        
+      - name: Build APK
+        script: |
+          cd android
+          ./gradlew assembleDebug
+          
+    artifacts:
+      - android/app/build/outputs/**/*.apk
+      
+    publishing:
+      email:
+        recipients:
+          - seu-email@exemplo.com
+        notify:
+          success: true
+          failure: true
+
+  # ============================================
+  # Build iOS IPA
+  # ============================================
+  ios-build:
+    name: iOS Build
+    max_build_duration: 90
+    instance_type: mac_mini_m1
+    
+    environment:
+      node: 20
+      xcode: latest
+      cocoapods: default
+      vars:
+        # Configure estas variáveis no Codemagic Dashboard
+        BUNDLE_ID: "app.lovable.vagou"
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)  # Adicione no dashboard
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)  # Adicione no dashboard
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)  # Adicione no dashboard
+        CERTIFICATE_PRIVATE_KEY: Encrypted(...)  # Adicione no dashboard
+      
+    triggering:
+      events:
+        - push
+        - tag
+      branch_patterns:
+        - pattern: main
+          include: true
+      tag_patterns:
+        - pattern: 'v*'
+          include: true
+    
+    integrations:
+      app_store_connect: VAGOU_ASC  # Nome da integração no Codemagic
+    
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+        
+      - name: Build web app
+        script: npm run build
+        
+      - name: Add iOS platform
+        script: npx cap add ios || true
+        
+      - name: Sync Capacitor
+        script: npx cap sync ios
+        
+      - name: Install CocoaPods
+        script: |
+          cd ios/App
+          pod install
+          
+      - name: Set up code signing
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_DEVELOPMENT \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
+          
+      - name: Build iOS
+        script: |
+          cd ios/App
+          xcode-project build-ipa \
+            --workspace "App.xcworkspace" \
+            --scheme "App"
+            
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      
+    publishing:
+      email:
+        recipients:
+          - seu-email@exemplo.com
+        notify:
+          success: true
+          failure: true
+      # Opcional: Publicar automaticamente no TestFlight
+      # app_store_connect:
+      #   auth: integration
+      #   submit_to_testflight: true
+
+  # ============================================
+  # Build Android + iOS (Release)
+  # ============================================
+  release-build:
+    name: Release Build (Android + iOS)
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    
+    environment:
+      node: 20
+      java: 17
+      xcode: latest
+      cocoapods: default
+      vars:
+        BUNDLE_ID: "app.lovable.vagou"
+        
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'v*'
+          include: true
+    
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+        
+      - name: Build web app
+        script: npm run build
+        
+      # Android
+      - name: Setup Android
+        script: |
+          npx cap add android || true
+          npx cap sync android
+          
+      - name: Build Android Release
+        script: |
+          cd android
+          ./gradlew assembleRelease
+          
+      # iOS
+      - name: Setup iOS
+        script: |
+          npx cap add ios || true
+          npx cap sync ios
+          cd ios/App && pod install
+          
+      - name: Build iOS
+        script: |
+          cd ios/App
+          xcode-project build-ipa \
+            --workspace "App.xcworkspace" \
+            --scheme "App"
+            
+    artifacts:
+      - android/app/build/outputs/**/*.apk
+      - build/ios/ipa/*.ipa
+      
+    publishing:
+      email:
+        recipients:
+          - seu-email@exemplo.com
+        notify:
+          success: true
+          failure: true

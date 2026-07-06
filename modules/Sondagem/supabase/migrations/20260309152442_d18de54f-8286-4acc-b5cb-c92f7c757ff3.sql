@@ -1,0 +1,1 @@
+ALTER VIEW view_criancas_unificado SET (security_invoker = on);
