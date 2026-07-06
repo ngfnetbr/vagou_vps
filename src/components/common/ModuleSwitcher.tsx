@@ -6,6 +6,7 @@ import { useUserPermissions } from "@/hooks/api/permissoes-hooks";
 import { useConfiguracoesPublicas } from "@/hooks/api/configuracoes-hooks";
 import { getAccessibleModules, type EcosystemModuleId } from "@/config/ecosystem-modules";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { BrandLogo } from "@/components/common/BrandLogo";
 import {
   DropdownMenu,
@@ -76,7 +77,14 @@ export function ModuleSwitcher() {
                 if (!isActive) navigate(mod.homePath);
               }}
             >
-              <BrandLogo name={mod.logo} className="h-7 text-foreground transition-transform duration-200" title={mod.name} />
+              <div className="flex items-center gap-2">
+                <BrandLogo name={mod.logo} className="h-7 text-foreground transition-transform duration-200" title={mod.name} />
+                {mod.beta && (
+                  <Badge variant="warning" className="text-[10px] px-1.5 py-0">
+                    BETA
+                  </Badge>
+                )}
+              </div>
               <div className="flex-1" />
               {isActive && <Check className="h-4 w-4 text-primary" />}
             </DropdownMenuItem>
