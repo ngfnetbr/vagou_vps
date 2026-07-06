@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
@@ -319,9 +320,9 @@ export default function Login() {
                   >
                     <BrandLogo name={m.logo} className="h-5 text-foreground/70" title={m.shortName} />
                     {m.beta && (
-                      <span className="rounded bg-info/15 px-1 text-[9px] font-bold text-info">
+                      <Badge variant="info" className="rounded-full px-2 text-[9px] tracking-wider">
                         BETA
-                      </span>
+                      </Badge>
                     )}
                   </span>
                 ))}

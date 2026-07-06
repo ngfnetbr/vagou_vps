@@ -80,7 +80,7 @@ export function ModuleSwitcher() {
               <div className="flex items-center gap-2">
                 <BrandLogo name={mod.logo} className="h-7 text-foreground transition-transform duration-200" title={mod.name} />
                 {mod.beta && (
-                  <Badge variant="info" className="text-[10px] px-1.5 py-0">
+                  <Badge variant="info" className="rounded-full text-[10px] px-2.5 py-0 tracking-wider">
                     BETA
                   </Badge>
                 )}
