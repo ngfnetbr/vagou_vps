@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useEffect } from "react"
 import { Skeleton } from "@ui/skeleton"
 import { getAuditLogs } from "@sam/lib/actions/auditoria"

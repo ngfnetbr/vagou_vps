@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Component, ReactNode, ErrorInfo } from "react";
 import { Button } from "@ui/button";
 

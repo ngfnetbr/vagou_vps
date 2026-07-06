@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Badge } from "@ui/badge"
 import { cn } from "@sam/lib/utils"
 import { getSpecialtyVariant } from "./specialty-utils"

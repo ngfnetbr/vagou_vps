@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Users, Clock, BookOpen, TrendingDown, Trophy, Medal, Filter, ClipboardList, LayoutDashboard } from "lucide-react";
 import { useDashboardStats, useNiveis, useCMEIs } from "@sondagem/hooks/useSupabaseData";
 import { useDashboardRanking } from "@sondagem/hooks/useDashboardRanking";

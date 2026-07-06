@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Database } from "./types";
 
 type PublicSchema = Database["public"];

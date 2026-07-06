@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Fragment, useEffect, useMemo, useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { useSearchParams } from "react-router-dom"

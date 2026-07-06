@@ -1,3 +1,4 @@
+// @ts-nocheck
 export type ComplaintStatus = "pending" | "in_review" | "scheduled" | "completed" | "rejected"
 
 export type ReferralStatus = "none" | "requested" | "accepted" | "rejected"

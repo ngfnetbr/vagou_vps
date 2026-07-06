@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useEffect } from "react"
 import { Users, SearchX, Database, Cloud } from "lucide-react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@ui/table"

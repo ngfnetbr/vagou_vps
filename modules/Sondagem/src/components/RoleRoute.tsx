@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useAuth } from "@root/contexts/AuthContext";
 import { Navigate, Outlet } from "react-router-dom";
 

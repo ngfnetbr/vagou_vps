@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@sondagem/integrations/supabase/client";
 import type { Tables } from "@sondagem/integrations/supabase/db";

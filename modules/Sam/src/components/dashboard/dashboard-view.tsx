@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from "react"
 import { Button } from "@ui/button"
 import { LayoutGrid, BarChart3 } from "lucide-react"

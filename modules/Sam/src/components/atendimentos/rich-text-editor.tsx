@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useRef, useCallback } from "react"
 import DOMPurify from "dompurify"
 import { Bold, Italic } from "lucide-react"

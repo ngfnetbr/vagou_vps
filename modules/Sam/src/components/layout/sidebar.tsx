@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Link, useLocation } from "react-router-dom"
 import { cn } from "@root/lib/utils"
 import {

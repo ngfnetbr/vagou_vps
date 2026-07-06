@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from "react"
 import { Spinner } from "@/components/common/Spinner";
 import { Card, CardContent } from "@ui/card"

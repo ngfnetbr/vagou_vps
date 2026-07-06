@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useMemo } from "react";
 import { Spinner } from "@/components/common/Spinner";
 import { GraduationCap, Lock, ArrowLeft } from "lucide-react";

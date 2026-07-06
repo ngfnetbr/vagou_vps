@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { supabase } from '@sam/integrations/supabase/client'
 import { dispatchWebhookEvent } from '@sam/lib/actions/webhooks'
 

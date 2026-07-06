@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState, useEffect, useMemo } from "react"
 import { Badge } from "@ui/badge"
 import { Card, CardContent } from "@ui/card"

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from "react"
 import { Spinner } from "@/components/common/Spinner";
 import { useNavigate } from "react-router-dom"

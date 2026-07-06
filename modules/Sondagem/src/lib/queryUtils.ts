@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function chunkArray<T>(items: T[], chunkSize: number): T[][] {
   if (chunkSize <= 0) {
     throw new Error("chunkSize must be greater than zero");

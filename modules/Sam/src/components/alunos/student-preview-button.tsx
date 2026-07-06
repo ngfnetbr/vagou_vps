@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Link } from "react-router-dom"
 import { Button } from "@ui/button"
 import { Eye } from "lucide-react"

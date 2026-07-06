@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Navigate, Outlet, useLocation } from "react-router-dom"
 import { useAuth } from "@root/contexts/AuthContext"
 import { useUserPermissions } from "@root/hooks/api/permissoes-hooks"

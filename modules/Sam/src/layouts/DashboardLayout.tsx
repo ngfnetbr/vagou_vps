@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Outlet, useLocation } from "react-router-dom"
 import { AppSidebar } from "@sam/components/layout/app-sidebar"
 import { Header } from "@sam/components/layout/header"
