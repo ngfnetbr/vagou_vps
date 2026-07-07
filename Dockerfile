@@ -15,6 +15,7 @@ ENV VITE_SITE_URL=$VITE_SITE_URL
 ENV VITE_API_URL=$VITE_API_URL
 
 COPY package*.json ./
+COPY dsgov-latest.tgz ./
 
 RUN npm install
 
@@ -48,3 +49,5 @@ RUN printf '%s\n' \
 > /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
